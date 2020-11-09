@@ -2,12 +2,12 @@ CREATE DATABASE IF NOT EXISTS retirement;
 USE retirement;
 
 -- Drop existing tables
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS checklists;
+DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS patients;
-DROP TABLE IF EXISTS appointments;
-DROP TABLE IF EXISTS checklists;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS roles;
 
 -- Table for user roles
 CREATE TABLE roles (
@@ -22,6 +22,7 @@ CREATE TABLE users (
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
   phone VARCHAR(10) NOT NULL,
   dob DATE,
   role INT NOT NULL,
