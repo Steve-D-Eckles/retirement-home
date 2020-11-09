@@ -4,10 +4,12 @@ li {
 .register {
   display: flex;
   flex-direction: column;
+  margin-left: 5em;
   width: 18em;
 
+
 }
-.register li {
+.register * {
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
@@ -16,5 +18,4 @@ li {
 
 .register input {
   border: 1px solid black;
-  border-bottom: none;
 }
