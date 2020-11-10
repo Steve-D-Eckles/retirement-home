@@ -7,31 +7,39 @@ if ( mysqli_connect_errno() ) {
   exit('Failed to connect to MySQL: ' . mysqli_connect_error());
 }
 
-$confirm = [];
-$deny = [];
-foreach ($_POST['confirm'] as $id) {
-  $confirm[] = (int) $id;
-}
 
-foreach ($_POST['deny'] as $id) {
-  $deny[] = (int) $id;
-}
-
-$placeholder = array_fill(0, count($confirm), '?');
-
-if ($stmt = $con->prepare('UPDATE users SET confirmed = 1 WHERE user_id IN' . '(' . implode(',', $placeholder) . ')')) {
-  $stmt->bind_param(str_repeat('i', count($confirm)), ...$confirm);
+echo <<<"EOT"
+<form action='approve-submit.php' method='post'>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Confirm</th>
+      <th>Deny</th>
+    </tr>
+EOT;
+if ($stmt = $con->prepare('SELECT user_id, first_name, last_name, role_name
+                           FROM users JOIN roles ON users.role = roles.role_id
+                           WHERE confirmed = 0')) {
   $stmt->execute();
-  $stmt->close();
+  $stmt->store_result();
+  $stmt->bind_result($user_id, $first_name, $last_name, $role_name);
+
+  while ($stmt->fetch()) {
+    echo <<<"EOT"
+    <tr>
+      <td>$first_name $last_name</td>
+      <td>$role_name</td>
+      <td><input type='checkbox' name='confirm[]' value=$user_id></td>
+      <td><input type='checkbox' name='deny[]' value=$user_id></td>
+    </tr>
+    EOT;
+  }
+
 }
-
-$placeholder = array_fill(0, count($deny), '?');
-
-if ($stmt = $con->prepare('DELETE FROM users WHERE user_id IN' . '(' . implode(',', $placeholder) . ')')) {
-  $stmt->bind_param(str_repeat('i', count($deny)), ...$deny);
-  $stmt->execute();
-  $stmt->close();
-}
-
-header('Location: role.php')
+echo <<<"EOT"
+  </table>
+  <input type='submit' value='Submit'>
+</form>
+EOT;
 ?>
