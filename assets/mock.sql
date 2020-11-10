@@ -13,7 +13,7 @@ VALUES ('alex', 'admin', 'alex@admin.com', 'password', '5555555', '1900-01-01', 
        ('sam', 'super', 'sam@super.com', 'password', '5555555', '1900-01-01', 2, 1),
        ('dana', 'doctor', 'dana@doctor.com', 'password', '5555555', '1900-01-01', 3, 1),
        ('chris', 'caretaker', 'chris@caretaker.com', 'password', '5555555', '1900-01-01', 4, 1),
-       ('percy', 'patient', 'percy@patient.com', 'password', '5555555', '1900-01-01', 5, 1),
+       ('percy', 'patient', 'percy@patient.com', 'password', '5555555', '1900-01-01', 5, 0),
        ('prudence', 'patient', 'prudence@patient.com', 'password', '5555555', '1900-01-01', 5, 0),
        ('frank', 'family', 'frank@family.com', 'password', '5555555', '1900-01-01', 6, 1);
 
