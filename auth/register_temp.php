@@ -1,3 +1,6 @@
+<?php
+
+echo <<< "EOT"
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -22,16 +25,16 @@
         <input type="text" name="email" required/>
 
         <label for="password">Password</label>
-        <input type="text" name="password" required/>
+        <input type="password" name="password" required/>
 
         <label for="role">Role</label>
         <select class="" name="role">
-          <option value="admin">Admin</option>
-          <option value="supervisor">Supervisor</option>
-          <option value="doctor">Doctor</option>
-          <option value="caregiver">Caregiver</option>
-          <option value="patient">Patient</option>
-          <option value="familymember">Family Member</option>
+          <option value=1 >Admin</option>
+          <option value=2 >Supervisor</option>
+          <option value=3 >Doctor</option>
+          <option value=4 >Caregiver</option>
+          <option value=5 >Patient</option>
+          <option value=6 >Family Member</option>
         </select>
 
         <label for="fname">First Name</label>
@@ -41,11 +44,10 @@
         <input type="text" name="lname" required/>
 
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone"
-               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required/>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
 
-        <label for="date-of-birth">Date of Birth</label>
-        <input type="date" id="date-of-birth" name="date-of-birth" required/>
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="date-of-birth" name="dob" required/>
 
         <input type="submit" value="Submit">
       </form>
@@ -53,3 +55,12 @@
     </section>
   </body>
 </html>
+EOT;
+session_start();
+if(isset($_SESSION['error'])){
+  echo $_SESSION['error'];
+  unset( $_SESSION['error'] );
+}
+
+
+?>
