@@ -43,7 +43,7 @@ echo <<< "EOT"
         <label for="lname">Last Name</label>
         <input type="text" name="lname" required/>
 
-        <label for="phone">Phone Number</label>
+        <label for="phone">Phone Number (xxx-xxx-xxxx)</label>
         <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
 
         <label for="dob">Date of Birth</label>
@@ -56,6 +56,7 @@ echo <<< "EOT"
   </body>
 </html>
 EOT;
+// flash if errors
 session_start();
 if(isset($_SESSION['error'])){
   echo $_SESSION['error'];

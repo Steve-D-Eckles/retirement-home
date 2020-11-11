@@ -33,5 +33,5 @@ if ($stmt = $con->prepare('DELETE FROM users WHERE user_id IN' . '(' . implode('
   $stmt->close();
 }
 
-header('Location: role.php')
+header('Location: approve.php')
 ?>
