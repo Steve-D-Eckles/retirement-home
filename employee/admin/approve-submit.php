@@ -17,20 +17,24 @@ foreach ($_POST['deny'] as $id) {
   $deny[] = (int) $id;
 }
 
-$placeholder = array_fill(0, count($confirm), '?');
+if (count($confirm) > 0) {
+  $placeholder = array_fill(0, count($confirm), '?');
 
-if ($stmt = $con->prepare('UPDATE users SET confirmed = 1 WHERE user_id IN' . '(' . implode(',', $placeholder) . ')')) {
-  $stmt->bind_param(str_repeat('i', count($confirm)), ...$confirm);
-  $stmt->execute();
-  $stmt->close();
+  if ($stmt = $con->prepare('UPDATE users SET confirmed = CURDATE() WHERE user_id IN ' . '(' . implode(',', $placeholder) . ')')) {
+    $stmt->bind_param(str_repeat('i', count($confirm)), ...$confirm);
+    $stmt->execute();
+    $stmt->close();
+  }
 }
 
-$placeholder = array_fill(0, count($deny), '?');
+if (count($deny) > 0) {
+  $placeholder = array_fill(0, count($deny), '?');
 
-if ($stmt = $con->prepare('DELETE FROM users WHERE user_id IN' . '(' . implode(',', $placeholder) . ')')) {
-  $stmt->bind_param(str_repeat('i', count($deny)), ...$deny);
-  $stmt->execute();
-  $stmt->close();
+  if ($stmt = $con->prepare('DELETE FROM users WHERE user_id IN ' . '(' . implode(',', $placeholder) . ')')) {
+    $stmt->bind_param(str_repeat('i', count($deny)), ...$deny);
+    $stmt->execute();
+    $stmt->close();
+  }
 }
 
 header('Location: approve.php')

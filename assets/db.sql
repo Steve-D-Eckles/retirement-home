@@ -26,7 +26,7 @@ CREATE TABLE users (
   phone VARCHAR(12) NOT NULL,
   dob DATE,
   role INT NOT NULL,
-  confirmed BOOLEAN NOT NULL,
+  confirmed DATE,
 
   FOREIGN KEY (role)
     REFERENCES roles (role_id)
