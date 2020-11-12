@@ -13,7 +13,9 @@ DROP TABLE IF EXISTS roles;
 CREATE TABLE roles (
   role_id INT AUTO_INCREMENT PRIMARY KEY,
   role_name VARCHAR(25) NOT NULL,
-  access_level INT NOT NULL
+  access_level INT NOT NULL,
+
+  UNIQUE(role_name)
 );
 
 -- Table for all registered users
