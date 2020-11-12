@@ -18,7 +18,7 @@ echo <<< "EOT"
 
     <h1>Login</h1>
     <section>
-      <form class="" action="auth.php" method="post">
+      <form class="" action="login.php" method="post">
 
         <input type="text" name="email" value="Email" required/>
         <input type="text" name="password" value="Password" required/>

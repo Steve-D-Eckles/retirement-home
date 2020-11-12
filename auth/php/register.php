@@ -37,12 +37,12 @@ if(mysqli_stmt_error($stmt)){
   $_SESSION["error"] = errno(mysqli_stmt_errno($stmt));
   header("Location:../register_temp.php");
 }else{
-  header("Location:../login.php");
+  header("Location:../login_temp.php");
 }
 mysqli_stmt_close($stmt);
 
 //roles of employees
-$roles = array(1, 2, 3, 4);
+$employees = array(1, 2, 3, 4);
 
 // Grab user id with email
 $stmt = mysqli_prepare($link, "SELECT user_id FROM users WHERE email = ?");
@@ -54,13 +54,14 @@ mysqli_stmt_fetch($stmt);
 $user_id = $user;
 mysqli_stmt_close($stmt);
 
+// If role is patient
 if($role == 5){
   // Insert into patient table with user id
   $stmt = mysqli_prepare($link, "INSERT INTO patients (`patient_id`, `family_code`, `emergency_contact`, `ec_relation`, `group_id`) VALUES (?,?,?,?,1)");
   mysqli_stmt_bind_param($stmt, 'iiss', $user_id, $_POST['familycode'], $_POST['emer_contact'], $_POST['relation'] );
   mysqli_stmt_execute($stmt);
   mysqli_stmt_close($stmt);
-}else{
+}elseif (inarray($role, $employees)){
   // Insert into employees table with user id
   $stmt = mysqli_prepare($link, "INSERT INTO employees (`employee_id`, `salary`, `group_id`) VALUES (?,null,1)");
   mysqli_stmt_bind_param($stmt, 'i', $user_id);
