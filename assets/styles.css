@@ -1,7 +1,7 @@
 li {
   list-style: none;
 }
-.register {
+.form-style {
   display: flex;
   flex-direction: column;
   margin-left: 5em;
@@ -9,13 +9,13 @@ li {
 
 
 }
-.register * {
+.form-style * {
   border-bottom: 1px solid black;
   display: flex;
   justify-content: space-between;
   margin-top: .5em;
 }
 
-.register input {
+.form-style input {
   border: 1px solid black;
 }

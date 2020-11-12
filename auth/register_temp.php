@@ -7,7 +7,7 @@ echo <<< "EOT"
     <meta charset="utf-8">
     <title>Register</title>
     <link rel="stylesheet" href="../assets/styles.css">
-    <script type="text/javascript" src="if_patient.js"></script>
+    <script type="text/javascript" src="ifpatient.js"></script>
   </head>
   <body>
 
@@ -20,7 +20,7 @@ echo <<< "EOT"
     <h1>Register</h1>
     <section>
 
-      <form class="register" action="php/register.php" method="post">
+      <form class="form-style register" action="php/register.php" method="post">
 
         <label for="email">Email</label>
         <input type="text" name="email" required/>
@@ -29,7 +29,7 @@ echo <<< "EOT"
         <input type="password" name="password" required/>
 
         <label for="role">Role</label>
-        <select onchange="patient(role);" name="role">
+        <select onchange="patient(role)" name="role">
           <option value=1 >Admin</option>
           <option value=2 >Supervisor</option>
           <option value=3 >Doctor</option>

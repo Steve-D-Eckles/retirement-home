@@ -18,10 +18,13 @@ echo <<< "EOT"
 
     <h1>Login</h1>
     <section>
-      <form class="" action="login.php" method="post">
+      <form class="form-style" action="php/login.php" method="post">
 
-        <input type="text" name="email" value="Email" required/>
-        <input type="text" name="password" value="Password" required/>
+        <label for="email">Email</label>
+        <input type="text" name="email" required/>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" required/>
 
         <input type="submit" value="Submit">
 
@@ -31,5 +34,11 @@ echo <<< "EOT"
   </body>
 </html>
 EOT;
+// flash if errors
+session_start();
+if(isset($_SESSION['error'])){
+  echo $_SESSION['error'];
+  unset( $_SESSION['error'] );
+}
 
 ?>
