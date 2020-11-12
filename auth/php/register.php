@@ -16,11 +16,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // check for empty values in form
   foreach($_POST as $name => $value){
     if(empty(trim($value))){
-      echo $name;
       // if empty show error message
       session_start();
       $_SESSION["error"] = "<p> Please enter: <p>". $name;
       header("Location:../register_temp.php");
+      exit;
     }
   }
 }
@@ -36,6 +36,7 @@ if(mysqli_stmt_error($stmt)){
   session_start();
   $_SESSION["error"] = errno(mysqli_stmt_errno($stmt));
   header("Location:../register_temp.php");
+  exit;
 }else{
   header("Location:../login_temp.php");
 }
@@ -73,6 +74,8 @@ if($role == 5){
 function errno($no){
   if($no == 1062){
     return "<p> email already in use. </p>";
+  }else{
+    echo "idk";
   }
 }
 
