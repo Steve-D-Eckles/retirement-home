@@ -20,7 +20,7 @@ echo <<<"EOT"
 EOT;
 if ($stmt = $con->prepare('SELECT user_id, first_name, last_name, role_name
                            FROM users JOIN roles ON users.role = roles.role_id
-                           WHERE confirmed = 0')) {
+                           WHERE confirmed IS NULL')) {
   $stmt->execute();
   $stmt->store_result();
   $stmt->bind_result($user_id, $first_name, $last_name, $role_name);

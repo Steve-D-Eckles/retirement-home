@@ -9,13 +9,13 @@ VALUES ('admin', 1),
        ('family', 6);
 
 INSERT INTO users (first_name, last_name, email, password, phone, dob, role, confirmed)
-VALUES ('alex', 'admin', 'alex@admin.com', 'password', '5555555', '1900-01-01', 1, 1),
-       ('sam', 'super', 'sam@super.com', 'password', '5555555', '1900-01-01', 2, 1),
-       ('dana', 'doctor', 'dana@doctor.com', 'password', '5555555', '1900-01-01', 3, 1),
-       ('chris', 'caretaker', 'chris@caretaker.com', 'password', '5555555', '1900-01-01', 4, 1),
-       ('percy', 'patient', 'percy@patient.com', 'password', '5555555', '1900-01-01', 5, 0),
-       ('prudence', 'patient', 'prudence@patient.com', 'password', '5555555', '1900-01-01', 5, 0),
-       ('frank', 'family', 'frank@family.com', 'password', '5555555', '1900-01-01', 6, 1);
+VALUES ('alex', 'admin', 'alex@admin.com', 'password', '5555555', '1900-01-01', 1, '1900-01-01'),
+       ('sam', 'super', 'sam@super.com', 'password', '5555555', '1900-01-01', 2, '1900-01-01'),
+       ('dana', 'doctor', 'dana@doctor.com', 'password', '5555555', '1900-01-01', 3, '1900-01-01'),
+       ('chris', 'caretaker', 'chris@caretaker.com', 'password', '5555555', '1900-01-01', 4, '1900-01-01'),
+       ('percy', 'patient', 'percy@patient.com', 'password', '5555555', '1900-01-01', 5, '1900-01-01'),
+       ('prudence', 'patient', 'prudence@patient.com', 'password', '5555555', '1900-01-01', 5, NULL),
+       ('frank', 'family', 'frank@family.com', 'password', '5555555', '1900-01-01', 6, '1900-01-01');
 
 INSERT INTO patients (patient_id, family_code, emergency_contact, ec_relation, group_id)
 VALUES (5, 'famcode', 'Frank Family', 'Second Cousin', 1),
