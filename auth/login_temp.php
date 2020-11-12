@@ -1,3 +1,6 @@
+<?php
+
+echo <<< "EOT"
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -15,13 +18,18 @@
 
     <h1>Login</h1>
     <section>
-      <form class="" action="auth.php" method="post">
+      <form class="" action="login.php" method="post">
 
-        <input type="text" name="email" value="Email">
-        <input type="text" name="password" value="Password">
+        <input type="text" name="email" value="Email" required/>
+        <input type="text" name="password" value="Password" required/>
+
+        <input type="submit" value="Submit">
 
       </form>
 
     </section>
   </body>
 </html>
+EOT;
+
+?>

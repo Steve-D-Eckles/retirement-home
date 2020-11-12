@@ -23,7 +23,7 @@ CREATE TABLE users (
   last_name VARCHAR(100) NOT NULL,
   email VARCHAR(100) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  phone VARCHAR(10) NOT NULL,
+  phone VARCHAR(12) NOT NULL,
   dob DATE,
   role INT NOT NULL,
   confirmed BOOLEAN NOT NULL,
