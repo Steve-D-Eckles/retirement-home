@@ -7,6 +7,7 @@ echo <<< "EOT"
     <meta charset="utf-8">
     <title>Register</title>
     <link rel="stylesheet" href="../assets/styles.css">
+    <script type="text/javascript" src="if_patient.js"></script>
   </head>
   <body>
 
@@ -28,7 +29,7 @@ echo <<< "EOT"
         <input type="password" name="password" required/>
 
         <label for="role">Role</label>
-        <select class="" name="role">
+        <select onchange="patient(role);" name="role">
           <option value=1 >Admin</option>
           <option value=2 >Supervisor</option>
           <option value=3 >Doctor</option>
@@ -49,7 +50,7 @@ echo <<< "EOT"
         <label for="dob">Date of Birth</label>
         <input type="date" id="date-of-birth" name="dob" required/>
 
-        <input type="submit" value="Submit">
+        <input id="submit" type="submit" value="Submit">
       </form>
 
     </section>

@@ -12,11 +12,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $last_name = $_POST['lname'];
   $phone = $_POST['phone'];
   $dob = $_POST['dob'];
-  $unconfirmed = 0;
 
 // check for empty values in form
-  foreach($_POST as $name => $value) {
+  foreach($_POST as $name => $value){
     if(empty(trim($value))){
+      echo $name;
       // if empty show error message
       session_start();
       $_SESSION["error"] = "<p> Please enter: <p>". $name;
@@ -26,8 +26,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 // Prepare sql statement for inserting into users
-$stmt = mysqli_prepare($link, "INSERT INTO users (`first_name`, `last_name`, `email`, `password`, `phone`, `dob`, `role`, `confirmed`) VALUES (?,?,?,?,?,?,?,?)");
-mysqli_stmt_bind_param($stmt, 'ssssssii', $first_name, $last_name, $email, $password, $phone, $dob, $role, $unconfirmed);
+$stmt = mysqli_prepare($link, "INSERT INTO users (`first_name`, `last_name`, `email`, `password`, `phone`, `dob`, `role`, `confirmed`) VALUES (?,?,?,?,?,?,?,0)");
+mysqli_stmt_bind_param($stmt, 'ssssssi', $first_name, $last_name, $email, $password, $phone, $dob, $role);
 mysqli_stmt_execute($stmt);
 
 //check for errors from database entry
@@ -37,7 +37,35 @@ if(mysqli_stmt_error($stmt)){
   $_SESSION["error"] = errno(mysqli_stmt_errno($stmt));
   header("Location:../register_temp.php");
 }else{
-  header("Location:../login.html");
+  header("Location:../login.php");
+}
+mysqli_stmt_close($stmt);
+
+//roles of employees
+$roles = array(1, 2, 3, 4);
+
+// Grab user id with email
+$stmt = mysqli_prepare($link, "SELECT user_id FROM users WHERE email = ?");
+mysqli_stmt_bind_param($stmt, 's', $email);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_store_result($stmt);
+mysqli_stmt_bind_result($stmt, $user);
+mysqli_stmt_fetch($stmt);
+$user_id = $user;
+mysqli_stmt_close($stmt);
+
+if($role == 5){
+  // Insert into patient table with user id
+  $stmt = mysqli_prepare($link, "INSERT INTO patients (`patient_id`, `family_code`, `emergency_contact`, `ec_relation`, `group_id`) VALUES (?,?,?,?,1)");
+  mysqli_stmt_bind_param($stmt, 'iiss', $user_id, $_POST['familycode'], $_POST['emer_contact'], $_POST['relation'] );
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
+}else{
+  // Insert into employees table with user id
+  $stmt = mysqli_prepare($link, "INSERT INTO employees (`employee_id`, `salary`, `group_id`) VALUES (?,null,1)");
+  mysqli_stmt_bind_param($stmt, 'i', $user_id);
+  mysqli_stmt_execute($stmt);
+  mysqli_stmt_close($stmt);
 }
 
 //takes error number and returns error message
@@ -47,8 +75,6 @@ function errno($no){
   }
 }
 
-
-mysqli_stmt_close($stmt);
 // Close connection
 mysqli_close($link);
 ?>

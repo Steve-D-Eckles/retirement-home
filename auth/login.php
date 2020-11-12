@@ -1,3 +1,6 @@
+<?php
+
+echo <<< "EOT"
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -21,9 +24,12 @@
         <input type="text" name="password" value="Password" required/>
 
         <input type="submit" value="Submit">
-        
+
       </form>
 
     </section>
   </body>
 </html>
+EOT;
+
+?>
