@@ -63,11 +63,11 @@ CREATE TABLE employees (
     ON DELETE CASCADE
 );
 
--- Table for caretaker checklists for each user for each date
+-- Table for caregiver checklists for each user for each date
 CREATE TABLE checklists (
   list_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   patient_id BIGINT NOT NULL,
-  caretaker_id BIGINT NOT NULL,
+  caregiver_id BIGINT NOT NULL,
   list_date DATE NOT NULL,
   morn_med BOOLEAN,
   afternoon_med BOOLEAN,
@@ -80,7 +80,7 @@ CREATE TABLE checklists (
     REFERENCES users (user_id)
     ON DELETE CASCADE,
 
-  FOREIGN KEY (caretaker_id)
+  FOREIGN KEY (caregiver_id)
     REFERENCES users (user_id)
     ON DELETE CASCADE
 );
