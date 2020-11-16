@@ -12,12 +12,18 @@ echo <<< "EOT"
 
     <header>
       <a href="index.html">Back</a>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+      </nav>
     </header>
 
     <!-- Login Form -->
 
-    <h1>Login</h1>
-    <section>
+
+    <section class="auth">
+      <h1>Login</h1>
+      
       <form class="form-style" action="php/login.php" method="post">
 
         <label for="email">Email</label>
