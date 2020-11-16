@@ -139,11 +139,16 @@ header h1 {
   margin-top: 2em;
 }
 
+.row {
+  text-align: center;
+}
+
 .checklist tr th,
 .checklist tr td {
   box-shadow: .5px 2px 5px #004C52;
   font-size: 1.5em;
   padding: 1em;
+
 }
 
 .checklist tr th {
