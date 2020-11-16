@@ -20,8 +20,10 @@ echo <<< "EOT"
 
     <!-- Login Form -->
 
-    <h1>Login</h1>
-    <section>
+
+    <section class="auth">
+      <h1>Login</h1>
+      
       <form class="form-style" action="php/login.php" method="post">
 
         <label for="email">Email</label>

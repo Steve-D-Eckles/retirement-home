@@ -21,8 +21,9 @@ echo <<< "EOT"
 
     <!-- Register Form -->
 
+
+    <section class="auth">
     <h1>Register</h1>
-    <section>
 
       <form class="form-style register" action="php/register.php" method="post">
 
