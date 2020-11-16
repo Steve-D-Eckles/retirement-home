@@ -96,7 +96,7 @@ echo <<< "EOT"
   <body>
 
     <header>
-      <a href="">Logout</a>
+      <a href="../auth/login_temp.php">Logout</a>
 
       <h1>$first_name's Home</h1>
 
