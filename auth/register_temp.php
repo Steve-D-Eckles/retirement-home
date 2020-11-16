@@ -13,6 +13,10 @@ echo <<< "EOT"
 
     <header>
       <a href="index.html">Back</a>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+      </nav>
     </header>
 
     <!-- Register Form -->
