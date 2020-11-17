@@ -35,6 +35,11 @@ header a:hover {
   transition: all 2s ease;
 }
 
+header h1 {
+  color: #E2FDFF;
+  font-size: 3em;
+}
+
 /** nav **/
 
 .nav a {
@@ -46,7 +51,7 @@ header a:hover {
 }
 
 .nav {
-  margin-right: 3em;
+  margin-right: 1em;
 }
 
 /** home **/
@@ -127,5 +132,46 @@ header a:hover {
   flex-direction: column;
   justify-content: center;
   margin-top: 5em;
+}
 
+/** Checklist **/
+.checklist {
+  margin-top: 2em;
+}
+
+.row {
+  text-align: center;
+}
+
+.checklist tr th,
+.checklist tr td {
+  box-shadow: .5px 2px 5px #004C52;
+  font-size: 1.5em;
+  padding: 1em;
+
+}
+
+.checklist tr th {
+  background-image: linear-gradient(45deg, #613DC1, #7454C9);
+  color: #E2FDFF;
+}
+
+/** Patient **/
+.patient {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.patient article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+  font-size: 1.5em;
+  border-radius: 3px;
+  background-image: linear-gradient(45deg, #613DC1, #7454C9);
+  color: #E2FDFF;
+  padding: .5em 2em .5em 2em;
 }
