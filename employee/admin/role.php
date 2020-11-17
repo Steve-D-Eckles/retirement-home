@@ -3,7 +3,7 @@ require_once '../../auth/php/config.php';
 require '../../auth/php/auth.php';
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && auth([1], $link)) {
+if (auth([1], $link)) {
   echo <<<"EOT"
   <table>
     <tr>

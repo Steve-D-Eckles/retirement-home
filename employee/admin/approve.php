@@ -2,6 +2,8 @@
 require_once '../../auth/php/config.php';
 require '../../auth/php/auth.php';
 
+session_start();
+
 if (auth([1, 2], $link)) {
   echo <<<"EOT"
   <form action='approve-submit.php' method='post'>
@@ -15,7 +17,7 @@ if (auth([1, 2], $link)) {
   EOT;
   if ($stmt = $link->prepare('SELECT user_id, first_name, last_name, role_name
                              FROM users JOIN roles ON users.role = roles.role_id
-                             WHERE confirmed IS NULL')) {
+                             WHERE confirmed = 0')) {
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($user_id, $first_name, $last_name, $role_name);
