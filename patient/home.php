@@ -11,79 +11,77 @@ date_default_timezone_set('UTC');
 $date = "2020-11-16";
 
 // Getting checklist Info
-if ($stmt = $link->prepare('SELECT caretaker_id, morn_med, afternoon_med, night_med, breakfast, lunch, dinner
+if ($stmt = $link->prepare('SELECT caregiver_id, morn_med, afternoon_med, night_med, breakfast, lunch, dinner
                             FROM checklists
                             WHERE patient_id = ?
-                            AND list_date = ?')); {
+                            AND list_date = ?')) {
     $stmt->bind_param('is', $user_id, $date);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-      $stmt->bind_result($caretaker_id, $morn_med, $afternoon_med, $night_med, $breakfast, $lunch, $dinner);
+      $stmt->bind_result($caregiver_id, $morn_med, $afternoon_med, $night_med, $breakfast, $lunch, $dinner);
       $stmt->fetch();
+
+      //checking if task is completed and if so returning "done"
+      $morn_med = done($morn_med);
+      $afternoon_med = done($afternoon_med);
+      $night_med = done($night_med);
+      $breakfast = done($breakfast);
+      $lunch = done($lunch);
+      $dinner = done($dinner);
+  }else{
+    $morn_med = "";
+    $afternoon_med = "";
+    $night_med = "";
+    $breakfast = "";
+    $lunch = "";
+    $dinner = "";
+    $caregiver_name = "";
+    $caregiver_id = NULL;
+
   }
+
+  $stmt->close();
 }
 
-//checking if task is completed and if so returning "done"
-$morn_med = done($morn_med);
-$afternoon_med = done($afternoon_med);
-$night_med = done($night_med);
-$breakfast = done($breakfast);
-$lunch = done($lunch);
-$dinner = done($dinner);
-
-
 // Getting Caregiver name
-if ($stmt = $link->prepare('SELECT first_name, last_name
-                            FROM users
-                            WHERE user_id = ?')); {
-    $stmt->bind_param('i', $caretaker_id);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-      $stmt->bind_result($caregiver_fname, $caregiver_lname);
-      $stmt->fetch();
-  }
+if($caregiver_id != NULL){
+  $caregiver_name = get_name_by_id($caregiver_id, $link);
 }
 
 // Getting Doctor ID
-if ($stmt = $link->prepare('SELECT doctor_id
+if ($stmt = $link->prepare('SELECT doctor_id, appt_date, comment
                             FROM appointments
                             WHERE patient_id = ?
-                            AND appt_date = ?')); {
+                            AND appt_date = ?')) {
     $stmt->bind_param('is', $user_id, $date);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-      $stmt->bind_result($doc_id);
+      $stmt->bind_result($doc_id, $appt_date, $comment);
       $stmt->fetch();
+  }else{
+    $doc_id = NULL;
+    $appt_date = "";
+    $doc_name = "";
   }
+  $stmt->close();
 }
+
+
 
 // Getting Doctor Name
-if ($stmt = $link->prepare('SELECT first_name, last_name
-                            FROM users
-                            WHERE user_id = ?')); {
-    $stmt->bind_param('i', $doc_id);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-      $stmt->bind_result($doc_fname, $doc_lname);
-      $stmt->fetch();
-  }
+if($doc_id != NULL){
+  $doc_name = get_name_by_id($doc_id, $link);
 }
+
 
 // Capitalize names
 $first_name = ucfirst($first_name);
 $last_name = ucfirst($last_name);
-$caregiver_fname = ucfirst($caregiver_fname);
-$caregiver_lname = ucfirst($caregiver_lname);
-$doc_fname = ucfirst($doc_fname);
-$doc_lname = ucfirst($doc_lname);
+
 
 echo <<< "EOT"
 <!DOCTYPE html>
@@ -111,14 +109,26 @@ echo <<< "EOT"
         <p>$first_name $last_name</p>
         <p>ID: $user_id</p>
         <p>$date</p>
-      </article>
 
 
-      <table class='checklist'>
-        <tr class="row">
+
+      <table class='doctors'>
+        <tr>
           <th>Doctor</th>
           <th>Doctor's Appointment</th>
           <th>Caregiver</th>
+        </tr>
+        <tr>
+          <td>$doc_name</td>
+          <td>$appt_date</td>
+          <td>$caregiver_name</td>
+        </tr>
+      </table>
+
+      </article>
+
+      <table class='checklist'>
+        <tr class="row">
           <th>Morning Medicine</th>
           <th>Afternoon Medicine</th>
           <th>Night Medicine</th>
@@ -126,16 +136,13 @@ echo <<< "EOT"
           <th>Lunch</th>
           <th>Dinner</th>
         </tr>
-        <tr class='row'>
-          <td>$doc_fname $doc_lname</td>
-          <td>Doc appointments</td>
-          <td>$caregiver_fname $caregiver_lname</td>
-          <td>$morn_med</td>
-          <td>$afternoon_med</td>
-          <td>$night_med</td>
-          <td>$breakfast</td>
-          <td>$lunch</td>
-          <td>$dinner</td>
+        <tr class="row">
+          <td class='check'><div>$morn_med</div></td>
+          <td class='check'><div>$afternoon_med</div></td>
+          <td class='check'><div>$night_med</div></td>
+          <td class='check'><div>$breakfast</div></td>
+          <td class='check'><div>$lunch</div></td>
+          <td class='check'><div>$dinner</div></td>
         </tr>
       </table>
 
@@ -146,12 +153,29 @@ EOT;
 
 // Return string for Done or Uncompleted
 function done($task){
-  if($task == 0){
-    return "Uncomplete";
+  if($task === 0){
+    return "";
   }else{
-    return "Done";
+    return "&#x2713";
   }
 }
+function get_name_by_id($id, $link){
+  if ($stmt = $link->prepare('SELECT first_name, last_name
+                              FROM users
+                              WHERE user_id = ?')) {
+      $stmt->bind_param('i', $id);
+      $stmt->execute();
+      $stmt->store_result();
 
+      if ($stmt->num_rows > 0) {
+        $stmt->bind_result($fname, $lname);
+        $stmt->fetch();
 
+        return ucfirst($fname) . " " . ucfirst($lname);
+    }else{
+      return "";
+    }
+    $stmt->close();
+  }
+}
 ?>
