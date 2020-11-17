@@ -5,10 +5,15 @@ $first_name = $_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 $user_id = $_SESSION['user_id'];
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  $date = $_POST['date'];
+}
 
 date_default_timezone_set('UTC');
-// TODO: get correct time according to day
-$date = "2020-11-16";
+
+if(!isset($date)){
+  $date = date("Y/m/d");
+}
 
 // Getting checklist Info
 if ($stmt = $link->prepare('SELECT caregiver_id, morn_med, afternoon_med, night_med, breakfast, lunch, dinner
@@ -108,9 +113,14 @@ echo <<< "EOT"
       <article>
         <p>$first_name $last_name</p>
         <p>ID: $user_id</p>
-        <p>$date</p>
+        <form class="check-date" action="home.php" method="post">
 
+          <label for="date">$date</label><br>
+          <input type="date" name="date" value="date">
 
+          <input type="submit" value="submit">
+
+        </form>
 
       <table class='doctors'>
         <tr>
@@ -147,6 +157,10 @@ echo <<< "EOT"
       </table>
 
     </section>
+
+    <footer>
+      <p>Retirement Home</p>
+    </footer>
   </body>
 </html>
 EOT;

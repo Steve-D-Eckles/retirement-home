@@ -1,3 +1,5 @@
+
+/** General **/
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +12,8 @@ li {
   list-style: none;
 }
 
-header {
+header,
+footer {
   background-image: linear-gradient(45deg, #613DC1, #7454C9);
   display: flex;
   justify-content: space-between;
@@ -18,6 +21,19 @@ header {
   width: 100%;
   height: 8em;
   box-shadow: 0px 2px 3px black;
+}
+
+footer {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+footer p {
+  text-align: center;
+  font-size: 3em;
+  color: #E2FDFF;
 }
 
 header a:first-of-type {
@@ -32,7 +48,6 @@ header a:first-of-type {
 header a:hover {
   border-bottom: 1px solid #E2FDFF;
   border-top: 1px solid #E2FDFF;
-  transition: all 2s ease;
 }
 
 header h1 {
@@ -55,6 +70,7 @@ header h1 {
 }
 
 /** home **/
+
 .home {
   display: flex;
   justify-content: center;
@@ -126,6 +142,7 @@ header h1 {
 }
 
 /** Auth **/
+
 .auth {
   align-items: center;
   display: flex;
@@ -135,27 +152,9 @@ header h1 {
 }
 
 /** Checklist **/
+
 .checklist {
   margin-top: 2em;
-}
-
-.row {
-  text-align: center;
-}
-
-.doctors {
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.doctors tr th,
-.doctors tr td {
-  box-shadow: .5px 2px 5px #004C52;
-  font-size: 1em;
-  padding: .5em;
-  background-color: #F2EFFA;
-  color: #613DC1;
-  text-align: center;
 }
 
 .checklist tr th,
@@ -183,20 +182,50 @@ header h1 {
   left: 35%;
 }
 
+.check-date {
+text-align: center;
+}
+
+/** Row **/
+
+.row {
+  text-align: center;
+}
+
+/** Doctors **/
+
+.doctors {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.doctors tr th,
+.doctors tr td {
+  box-shadow: .5px 2px 5px #004C52;
+  font-size: 1em;
+  padding: .5em;
+  background-color: #F2EFFA;
+  color: #613DC1;
+  text-align: center;
+}
+
+
+
 /** Patient **/
 .patient {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 5em;
+  margin-top: 3em;
+  height: 100%;
 }
 
 .patient article {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   font-size: 1.5em;
   border-radius: 3px;
   background-image: linear-gradient(45deg, #613DC1, #7454C9);
