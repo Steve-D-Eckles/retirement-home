@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS retirement;
 USE retirement;
 
 -- Drop existing tables
+DROP TABLE IF EXISTS roster;
 DROP TABLE IF EXISTS checklists;
 DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS employees;
@@ -28,7 +29,7 @@ CREATE TABLE users (
   phone VARCHAR(12) NOT NULL,
   dob DATE,
   role INT NOT NULL,
-  confirmed DATE,
+  confirmed BOOLEAN,
 
   FOREIGN KEY (role)
     REFERENCES roles (role_id)
@@ -43,7 +44,9 @@ CREATE TABLE patients (
   family_code INT NOT NULL,
   emergency_contact VARCHAR(100),
   ec_relation VARCHAR(50),
-  group_id SMALLINT NOT NULL,
+  group_id SMALLINT,
+  admit_date DATE,
+  due INT,
 
   -- patient_id is both a primary and foreign key because patient is a subtype of user
   FOREIGN KEY (patient_id)
@@ -55,7 +58,6 @@ CREATE TABLE patients (
 CREATE TABLE employees (
   employee_id BIGINT PRIMARY KEY,
   salary INT,
-  group_id SMALLINT,
 
   -- employee_id is both a primary and foreign key because employee is a subtype of user
   FOREIGN KEY (employee_id)
@@ -101,6 +103,44 @@ CREATE TABLE appointments (
     ON DELETE CASCADE,
 
   FOREIGN KEY (doctor_id)
+    REFERENCES users (user_id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE roster (
+  roster_date DATE PRIMARY KEY,
+  supervisor_id BIGINT NOT NULL,
+  doctor_id BIGINT NOT NULL,
+  care_one_id BIGINT NOT NULL,
+  care_one_group SMALLINT NOT NULL,
+  care_two_id BIGINT NOT NULL,
+  care_two_group SMALLINT NOT NULL,
+  care_three_id BIGINT NOT NULL,
+  care_three_group SMALLINT NOT NULL,
+  care_four_id BIGINT NOT NULL,
+  care_four_group SMALLINT NOT NULL,
+
+  FOREIGN KEY (supervisor_id)
+    REFERENCES users (user_id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (doctor_id)
+    REFERENCES users (user_id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (care_one_id)
+    REFERENCES users (user_id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (care_two_id)
+    REFERENCES users (user_id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (care_three_id)
+    REFERENCES users (user_id)
+    ON DELETE CASCADE,
+
+  FOREIGN KEY (care_four_id)
     REFERENCES users (user_id)
     ON DELETE CASCADE
 );
