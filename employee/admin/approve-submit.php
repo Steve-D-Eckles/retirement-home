@@ -2,6 +2,8 @@
 require_once '../../auth/php/config.php';
 require '../../auth/php/auth.php';
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && auth([1, 2], $link)) {
   $confirm = [];
   $deny = [];
@@ -16,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && auth([1, 2], $link)) {
   if (count($confirm) > 0) {
     $placeholder = array_fill(0, count($confirm), '?');
 
-    if ($stmt = $link->prepare('UPDATE users SET confirmed = CURDATE() WHERE user_id IN ' . '(' . implode(',', $placeholder) . ')')) {
+    if ($stmt = $link->prepare('UPDATE users SET confirmed = 1 WHERE user_id IN ' . '(' . implode(',', $placeholder) . ')')) {
       $stmt->bind_param(str_repeat('i', count($confirm)), ...$confirm);
       $stmt->execute();
       $stmt->close();

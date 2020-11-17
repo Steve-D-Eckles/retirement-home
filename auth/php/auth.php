@@ -1,6 +1,5 @@
 <?php
 function auth($targets, $link) {
-  session_start();
   if (isset($_SESSION['loggedin'])) {
     if ($stmt = $link->prepare('SELECT role FROM users WHERE user_id = ?')) {
       $stmt->bind_param('i', $_SESSION['user_id']);
