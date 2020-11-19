@@ -16,9 +16,10 @@ if (auth([1, 2], $link)) {
         <a href="home.php">Home</a>
       </nav>
     </header>
-    <h1>Supervisor Home</h1>
-    <a href="add-info.php">Add Patient Info</a>
-    <a href="approve.php">Approve Pending Registrations</a>
+    <h1>Admin Home</h1>
+    <a href="role.php">View / Add Roles</a>
+    <a href="../super/add-info.php">Add Patient Info</a>
+    <a href="../super/approve.php">Approve Pending Registrations</a>
     <footer>
       <p>Retirement Home</p>
     </footer>
