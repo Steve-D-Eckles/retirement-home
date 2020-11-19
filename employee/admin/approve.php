@@ -32,7 +32,7 @@ if (auth([1, 2], $link)) {
       </tr>
       EOT;
     }
-
+    $stmt->close();
   }
   echo <<<"EOT"
     </table>
