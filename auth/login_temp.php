@@ -11,10 +11,10 @@ echo <<< "EOT"
   <body>
 
     <header>
-      <a href="index.html">Back</a>
+      <a href="../index.html">Back</a>
 
       <nav class="nav">
-        <a href="index.html">Home</a>
+        <a href="../index.html">Home</a>
       </nav>
     </header>
 
@@ -23,7 +23,7 @@ echo <<< "EOT"
 
     <section class="auth">
       <h1>Login</h1>
-      
+
       <form class="form-style" action="php/login.php" method="post">
 
         <label for="email">Email</label>

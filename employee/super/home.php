@@ -6,6 +6,6 @@ session_start();
 if (auth([1, 2], $link)) {
   echo 'This is the Supervisor Home';
 } else {
-  header('Location: ../../auth/index.html');
+  header('Location: ../../index.html');
 }
 ?>
