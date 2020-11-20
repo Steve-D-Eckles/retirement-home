@@ -71,8 +71,8 @@ function redirect_by_role($role){
     //exit;
   }
   if($role == 4){
-    //header('Location:');
-    //exit;
+    header('Location:../../employee/caregiver/home.php');
+    exit;
   }
   if($role == 5){
     header('Location: ../../patient/home.php');

@@ -173,6 +173,52 @@ header h1 {
   width: 3em;
 }
 
+.check-submit {
+  cursor: pointer;
+  appearance: none;
+  padding: .2em;
+  font-size: 1.2em;
+  color: #E2FDFF;
+  border: none;
+  background-image: linear-gradient(45deg, #613DC1, #7454C9);
+  box-shadow: 0px 0px 5px #004C52;
+  border-radius: 5px;
+}
+
+.check-submit:hover {
+  box-shadow: none;
+}
+
+.checkbox {
+  cursor: pointer;
+  appearance: none;
+  background-color: #fafafa;
+  border: 1px solid #cacece;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  padding: 1.5em;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.checkbox:hover {
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.15);
+}
+
+.checkbox:checked {
+	background-color: #e9ecee;
+	color: #613DC1;
+}
+
+.checkbox:checked:after {
+	content: '\2714';
+	font-size: 3em;
+	position: absolute;
+	top: 0px;
+	left: 3px;
+	color: #613DC1;
+}
+
 .check div{
   padding: .5px 5px 0px 5px;
   position: relative;

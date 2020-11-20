@@ -23,7 +23,7 @@ echo <<< "EOT"
 
     <section class="auth">
       <h1>Login</h1>
-      
+
       <form class="form-style" action="php/login.php" method="post">
 
         <label for="email">Email</label>
@@ -37,6 +37,11 @@ echo <<< "EOT"
       </form>
 
     </section>
+
+    <footer>
+      <p>Retirement Home</p>
+    </footer>
+    
   </body>
 </html>
 EOT;
