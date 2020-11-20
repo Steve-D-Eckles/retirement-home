@@ -6,14 +6,25 @@ session_start();
 
 if (auth([1, 2], $link)) {
   echo <<<"EOT"
-  <form action='approve-submit.php' method='post'>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Confirm</th>
-        <th>Deny</th>
-      </tr>
+  <head>
+    <link rel="stylesheet" href="../../assets/styles.css">
+  </head>
+  <body>
+    <header>
+      <a href="../../index.html">Logout</a>
+
+      <nav class="nav">
+        <a href="home.php">Home</a>
+      </nav>
+    </header>
+    <form action='approve-submit.php' method='post'>
+      <table class='doctors'>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Confirm</th>
+          <th>Deny</th>
+        </tr>
   EOT;
   if ($stmt = $link->prepare('SELECT user_id, first_name, last_name, role_name
                              FROM users JOIN roles ON users.role = roles.role_id
@@ -32,15 +43,16 @@ if (auth([1, 2], $link)) {
       </tr>
       EOT;
     }
-
+    $stmt->close();
   }
   echo <<<"EOT"
-    </table>
-    <input type='submit' value='Submit'>
-  </form>
+      </table>
+      <input type='submit' value='Submit'>
+    </form>
+  </body>
   EOT;
 } else {
   // Send the user away if they aren't allowed to be here
-  header('Location: ../../auth/index.html');
+  header('Location: ../../index.html');
 }
 ?>
