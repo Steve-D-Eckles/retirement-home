@@ -43,8 +43,7 @@ INSERT INTO appointments (patient_id, doctor_id, appt_date, comment, morn_med,
 VALUES (8, 3, '2020-11-09', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
        (8, 3, CURDATE(), NULL, NULL, NULL, NULL);
 
-INSERT INTO roster (roster_date, supervisor_id, doctor_id, care_one_id, care_one_group,
-                    care_two_id, care_two_group, care_three_id, care_three_group,
-                    care_four_id, care_four_group)
-VALUES ('2020-11-16', 2, 3, 4, 1, 5, 2, 6, 3, 7, 4),
-       (CURDATE(), 2, 3, 4, 1, 5, 2, 6, 3, 7, 4);
+INSERT INTO roster (roster_date, supervisor_id, doctor_id, care_one_id, care_two_id,
+                    care_three_id, care_four_id)
+VALUES ('2020-11-16', 2, 3, 4, 5, 6, 7),
+       (CURDATE(), 2, 3, 4, 5, 6, 7);

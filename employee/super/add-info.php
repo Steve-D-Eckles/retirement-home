@@ -11,7 +11,7 @@ if (auth([1, 2], $link)) {
   </head>
   <body>
     <header>
-      <a href="../../auth/index.html">Logout</a>
+      <a href="../../index.html">Logout</a>
 
       <nav class="nav">
         <a href="home.php">Home</a>
@@ -41,5 +41,8 @@ if (auth([1, 2], $link)) {
     </footer>
   </body>
   EOT;
+} else {
+  // Send the user away if they aren't allowed to be here
+  header('Location: ../../index.html');
 }
 ?>
