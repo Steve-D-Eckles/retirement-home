@@ -59,6 +59,11 @@ echo <<< "EOT"
       </form>
 
     </section>
+
+    <footer>
+      <p>Retirement Home</p>
+    </footer>
+    
   </body>
 </html>
 EOT;
