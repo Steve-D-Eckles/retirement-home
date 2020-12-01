@@ -41,8 +41,5 @@ if (auth([1, 2], $link)) {
     </footer>
   </body>
   EOT;
-} else {
-  // Send the user away if they aren't allowed to be here
-  header('Location: ../../index.html');
 }
 ?>

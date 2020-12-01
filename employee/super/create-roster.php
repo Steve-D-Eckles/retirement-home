@@ -75,8 +75,5 @@ if (auth([1, 2], $link)) {
       <p>Retirement Home</p>
     </footer>
   EOT;
-} else {
-  // Send the user away if they aren't allowed to be here
-  header('Location: ../../index.html');
 }
 ?>
