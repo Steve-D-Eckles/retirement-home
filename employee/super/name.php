@@ -3,6 +3,10 @@ require_once '../../auth/php/config.php';
 require '../../auth/php/auth.php';
 session_start();
 
+if(!isset($_SESSION['user_id'])){
+  header("Location:../../auth/login_temp.php");
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && auth([1, 2], $link)) {
   $user_id = (int) $_POST['id'];
   if ($stmt = $link->prepare('SELECT first_name, last_name

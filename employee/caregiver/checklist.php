@@ -3,6 +3,10 @@ require_once '../../auth/php/config.php';
 
 session_start();
 
+if(!isset($_SESSION['user_id'])){
+  header("Location:../../auth/login_temp.php");
+}
+
 // Building insert into string by concatinating all that are checked
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 

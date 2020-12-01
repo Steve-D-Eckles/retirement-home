@@ -3,6 +3,10 @@ require_once '../auth/php/config.php';
 require_once '../auth/php/auth.php';
 
 session_start();
+if(!isset($_SESSION['user_id'])){
+  header("Location:../auth/login_temp.php");
+}
+
 $first_name = $_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 $user_id = $_SESSION['user_id'];
@@ -102,7 +106,7 @@ if (auth([1, 5], $link)) {
     <body>
 
       <header>
-        <a href="../auth/login_temp.php">Logout</a>
+        <a href="../auth/php/logout.php">Logout</a>
 
         <h1>$first_name's Home</h1>
 

@@ -4,6 +4,10 @@ require '../../auth/php/auth.php';
 
 session_start();
 
+if(!isset($_SESSION['user_id'])){
+  header("Location:../../auth/login_temp.php");
+}
+
 if (auth([1, 2], $link)) {
   echo <<<"EOT"
   <head>
