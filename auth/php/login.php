@@ -1,6 +1,7 @@
 <?php
 // Include config file
 require_once "config.php";
+require_once "auth.php";
 session_start();
 $_SESSION = array();
 // Processing form data when form is submitted
@@ -37,6 +38,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           $_SESSION['user_id'] = $user_id;
           $_SESSION['first_name'] = $first_name;
           $_SESSION['last_name'] = $last_name;
+          $_SESSION['role'] = $role;
+
         }else{
 
           $_SESSION["error"] = "incorrect email and/or password";
@@ -55,32 +58,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       redirect_by_role($role);
     }
 
-}
-
-function redirect_by_role($role){
-  if($role == 1){
-    //header('Location:');
-    //exit;
-  }
-  if($role == 2){
-    //header('Location:');
-    //exit;
-  }
-  if($role == 3){
-    //header('Location:');
-    //exit;
-  }
-  if($role == 4){
-    header('Location:../../employee/caregiver/home.php');
-    exit;
-  }
-  if($role == 5){
-    header('Location: ../../patient/home.php');
-    exit;
-  }
-  if($role == 6){
-    //header('Location:');
-    //exit;
-  }
 }
 ?>

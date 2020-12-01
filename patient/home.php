@@ -1,9 +1,12 @@
 <?php
 require_once '../auth/php/config.php';
+require_once '../auth/php/auth.php';
+
 session_start();
 $first_name = $_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 $user_id = $_SESSION['user_id'];
+$role = $_SESSION['role'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $date = $_POST['date'];
@@ -88,82 +91,87 @@ $first_name = ucfirst($first_name);
 $last_name = ucfirst($last_name);
 
 
-echo <<< "EOT"
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="../assets/styles.css">
-  </head>
-  <body>
+if (auth([1, 5], $link)) {
+  echo <<< "EOT"
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Home</title>
+      <link rel="stylesheet" href="../assets/styles.css">
+    </head>
+    <body>
 
-    <header>
-      <a href="../auth/login_temp.php">Logout</a>
+      <header>
+        <a href="../auth/login_temp.php">Logout</a>
 
-      <h1>$first_name's Home</h1>
+        <h1>$first_name's Home</h1>
 
-      <nav class="nav">
-        <a href="home.php">Home</a>
-      </nav>
-    </header>
+        <nav class="nav">
+          <a href="home.php">Home</a>
+        </nav>
+      </header>
 
 
-    <section class='patient'>
-      <article>
-        <p>$first_name $last_name</p>
-        <p>ID: $user_id</p>
-        <form class="check-date" action="home.php" method="post">
+      <section class='patient'>
+        <article>
+          <p>$first_name $last_name</p>
+          <p>ID: $user_id</p>
+          <form class="check-date" action="home.php" method="post">
 
-          <label for="date">$date</label><br>
-          <input type="date" name="date" value="date">
+            <label for="date">$date</label><br>
+            <input type="date" name="date" value="date">
 
-          <input type="submit" value="submit">
+            <input type="submit" value="submit">
 
-        </form>
+          </form>
 
-      <table class='doctors'>
-        <tr>
-          <th>Doctor</th>
-          <th>Doctor's Appointment</th>
-          <th>Caregiver</th>
-        </tr>
-        <tr>
-          <td>$doc_name</td>
-          <td>$appt_date</td>
-          <td>$caregiver_name</td>
-        </tr>
-      </table>
+        <table class='doctors'>
+          <tr>
+            <th>Doctor</th>
+            <th>Doctor's Appointment</th>
+            <th>Caregiver</th>
+          </tr>
+          <tr>
+            <td>$doc_name</td>
+            <td>$appt_date</td>
+            <td>$caregiver_name</td>
+          </tr>
+        </table>
 
-      </article>
+        </article>
 
-      <table class='checklist'>
-        <tr class="row">
-          <th>Morning Medicine</th>
-          <th>Afternoon Medicine</th>
-          <th>Night Medicine</th>
-          <th>Breakfast</th>
-          <th>Lunch</th>
-          <th>Dinner</th>
-        </tr>
-        <tr class="row">
-          <td class='check'><div>$morn_med</div></td>
-          <td class='check'><div>$afternoon_med</div></td>
-          <td class='check'><div>$night_med</div></td>
-          <td class='check'><div>$breakfast</div></td>
-          <td class='check'><div>$lunch</div></td>
-          <td class='check'><div>$dinner</div></td>
-        </tr>
-      </table>
+        <table class='checklist'>
+          <tr class="row">
+            <th>Morning Medicine</th>
+            <th>Afternoon Medicine</th>
+            <th>Night Medicine</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+            <th>Dinner</th>
+          </tr>
+          <tr class="row">
+            <td class='check'><div>$morn_med</div></td>
+            <td class='check'><div>$afternoon_med</div></td>
+            <td class='check'><div>$night_med</div></td>
+            <td class='check'><div>$breakfast</div></td>
+            <td class='check'><div>$lunch</div></td>
+            <td class='check'><div>$dinner</div></td>
+          </tr>
+        </table>
 
-    </section>
+      </section>
 
-    <footer>
-      <p>Retirement Home</p>
-    </footer>
-  </body>
-</html>
-EOT;
+      <footer>
+        <p>Retirement Home</p>
+      </footer>
+    </body>
+  </html>
+  EOT;
+} else {
+  // Send the user away if they aren't allowed to be here
+  redirect_by_role($role);
+}
 
 // Return string for Done or Uncompleted
 function done($task){
