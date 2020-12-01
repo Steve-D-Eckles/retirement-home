@@ -25,7 +25,5 @@ if (auth([1, 2], $link)) {
     </footer>
   </body>
   EOT;
-} else {
-  header('Location: ../../index.html');
 }
 ?>
