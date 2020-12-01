@@ -15,7 +15,7 @@ if (auth([1, 2], $link)) {
   </head>
   <body>
     <header>
-      <a href="../../auth/index.html">Logout</a>
+      <a href="../../index.html">Logout</a>
 
       <nav class="nav">
         <a href="home.php">Home</a>

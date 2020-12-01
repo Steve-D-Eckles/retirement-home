@@ -71,12 +71,12 @@ CREATE TABLE checklists (
   patient_id BIGINT NOT NULL,
   caregiver_id BIGINT NOT NULL,
   list_date DATE NOT NULL,
-  morn_med BOOLEAN,
-  afternoon_med BOOLEAN,
-  night_med BOOLEAN,
-  breakfast BOOLEAN,
-  lunch BOOLEAN,
-  dinner BOOLEAN,
+  morn_med BOOLEAN DEFAULT 0,
+  afternoon_med BOOLEAN DEFAULT 0,
+  night_med BOOLEAN DEFAULT 0,
+  breakfast BOOLEAN DEFAULT 0,
+  lunch BOOLEAN DEFAULT 0,
+  dinner BOOLEAN DEFAULT 0,
 
   FOREIGN KEY (patient_id)
     REFERENCES users (user_id)
@@ -112,13 +112,9 @@ CREATE TABLE roster (
   supervisor_id BIGINT NOT NULL,
   doctor_id BIGINT NOT NULL,
   care_one_id BIGINT NOT NULL,
-  care_one_group SMALLINT NOT NULL,
   care_two_id BIGINT NOT NULL,
-  care_two_group SMALLINT NOT NULL,
   care_three_id BIGINT NOT NULL,
-  care_three_group SMALLINT NOT NULL,
   care_four_id BIGINT NOT NULL,
-  care_four_group SMALLINT NOT NULL,
 
   FOREIGN KEY (supervisor_id)
     REFERENCES users (user_id)
