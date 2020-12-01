@@ -6,7 +6,6 @@ session_start();
 $first_name = $_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 $user_id = $_SESSION['user_id'];
-$role = $_SESSION['role'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $date = $_POST['date'];
@@ -168,9 +167,6 @@ if (auth([1, 5], $link)) {
     </body>
   </html>
   EOT;
-} else {
-  // Send the user away if they aren't allowed to be here
-  redirect_by_role($role);
 }
 
 // Return string for Done or Uncompleted

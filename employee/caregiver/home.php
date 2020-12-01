@@ -6,7 +6,6 @@ session_start();
 $first_name = $_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 $user_id = $_SESSION['user_id'];
-$role =$_SESSION['role'];
 
 $first_name = ucfirst($first_name);
 $last_name = ucfirst($last_name);
@@ -107,8 +106,5 @@ if (auth([1, 4], $link)) {
     </body>
   </html>
   EOT;
-} else {
-  // Send the user away if they aren't allowed to be here
-  redirect_by_role($role);
 }
 ?>
