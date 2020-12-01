@@ -3,7 +3,7 @@ require_once '../../auth/php/config.php';
 require '../../auth/php/auth.php';
 
 session_start();
-header('Location: create-roster.php')
+header('Location: create-roster.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && auth([1, 2], $link)) {
   $date = isset($_POST['date']) ? $_POST['date'] : NULL;
   $super = isset($_POST['super']) ? $_POST['super'] : NULL;
@@ -41,7 +41,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && auth([1, 2], $link)) {
           }
           $stmt->close();
         }
-        
+        $query = "INSERT INTO checklists (patient_id, caregiver_id, list_date) VALUES ";
+        $cgs = [$cgone, $cgtwo, $cgthree, $cgfour];
+        $bind = [""];
+        for ($i = 0; $i < 4; $i++) {
+          for ($j = 0; $j < count($patients); $j++) {
+            if ($patients[$j][1] == $i + 1) {
+              $query .= "(?, ?, ?),";
+              $bind[0] .= "iis";
+              $bind[] = $patients[$j][0];
+              $bind[] = $cgs[$i];
+              $bind[] = $date;
+            }
+          }
+        }
+        $query = rtrim($query, ',');
+        if ($stmt = $link->prepare($query)) {
+          $stmt->bind_param(...$bind);
+          $stmt->execute();
+        }
       }
     }
   }

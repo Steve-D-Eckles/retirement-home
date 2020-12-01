@@ -69,7 +69,7 @@ if (auth([1, 2], $link)) {
   select('Caregiver 4', 'cgfour', $caregivers);
 
   echo <<<"EOT"
-      <input type='submit' value='Placeholder' disabled>
+      <input type='submit' value='Submit'>
     </form>
     <footer>
       <p>Retirement Home</p>
