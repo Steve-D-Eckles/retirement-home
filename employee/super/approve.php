@@ -21,14 +21,16 @@ if (auth([1, 2], $link)) {
         <a href="home.php">Home</a>
       </nav>
     </header>
-    <form action='approve-submit.php' method='post'>
-      <table class='doctors'>
-        <tr>
-          <th>Name</th>
-          <th>Role</th>
-          <th>Confirm</th>
-          <th>Deny</th>
-        </tr>
+    <section class='centered-form-wrap'>
+    <h1>Pending Registrations</h1>
+      <form action='approve-submit.php' method='post'>
+        <table class='doctors'>
+          <tr>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Confirm</th>
+            <th>Deny</th>
+          </tr>
   EOT;
   if ($stmt = $link->prepare('SELECT user_id, first_name, last_name, role_name
                              FROM users JOIN roles ON users.role = roles.role_id
@@ -50,9 +52,13 @@ if (auth([1, 2], $link)) {
     $stmt->close();
   }
   echo <<<"EOT"
-      </table>
-      <input type='submit' value='Submit'>
-    </form>
+        </table>
+        <input type='submit' value='Submit'>
+      </form>
+    </section>
+    <footer>
+      <p>Retirement Home</p>
+    </footer>
   </body>
   EOT;
 }
