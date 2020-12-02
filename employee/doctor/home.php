@@ -45,6 +45,8 @@ if (auth([3], $link)) {
     <input type="submit" value="submit">
     </form>
 
+    <h2>Past Appointments</h2>
+
     <table class='checklist'>
       <tr class="row">
         <th>Name</th>
@@ -90,7 +92,49 @@ if (auth([3], $link)) {
   }
 }
 echo <<<"EOT"
+
       </table>
+
+      <h2>Upcoming Appointments</h2>
+
+      <table class='checklist'>
+        <tr class="row">
+          <th>Name</th>
+          <th>Date</th>
+        </tr>
+
+    EOT;
+
+    //Grabs appointments info by user id and the date
+      if ($stmt = $link->prepare('SELECT u.first_name, u.last_name, appt_date
+                                  FROM appointments AS a
+                                  JOIN users AS u
+                                  ON a.patient_id = u.user_id
+                                  WHERE doctor_id = ?
+                                  AND appt_date > ?')) {
+          $stmt->bind_param('is', $user_id, $date);
+          $stmt->execute();
+          $stmt->store_result();
+
+          if ($stmt->num_rows > 0) {
+            $stmt->bind_result($patient_fname, $patient_lname, $date);
+
+
+    // Makes a row for every patients checklist
+    while ($stmt->fetch()) {
+      echo <<<"EOT"
+
+          <tr class="row">
+            <td><a href="patient_of_doc.php">$patient_fname $patient_lname</a></td>
+            <td class='check'>$date</td>
+          </tr>
+
+      EOT;
+      }
+    }
+  }
+  echo <<<"EOT"
+        </table>
 
       </section>
 
