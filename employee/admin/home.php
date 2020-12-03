@@ -27,7 +27,11 @@ if (auth([1, 2], $link)) {
         <a href="../super/add-info.php">Add Patient Info</a>
         <a href="../super/approve.php">Pending Registrations</a>
         <a href="../super/create-roster.php">Create a Roster</a>
+<<<<<<< HEAD
         <a href="../../public/roster.php">View Rosters</a>
+=======
+        <a href="../public/roster.php">View Rosters</a>
+>>>>>>> 323e02fa719f4f9c9dc0ccefa477e2126321abb4
       </nav>
     </main>
     <footer>
