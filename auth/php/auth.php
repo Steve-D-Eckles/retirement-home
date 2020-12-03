@@ -24,14 +24,13 @@ function redirect_by_role($role_id){
     //exit;
   }
   if($role_id == 2){
-    header('Location:../employee/super/home.php');
+    header('Location:../../employee/super/home.php');
   }
   if($role_id == 3){
-    //header('Location:');
-    //exit;
+    header('Location:../../employee/doctor/home.php');
   }
   if($role_id == 4){
-    header('Location:../employee/caregiver/home.php');
+    header('Location:../../employee/caregiver/home.php');
   }
   if($role_id == 5){
     header('Location:../../patient/home.php');

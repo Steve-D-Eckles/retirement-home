@@ -12,6 +12,11 @@ li {
   list-style: none;
 }
 
+h2 {
+  color: #613DC1;
+  margin-top: 1em;
+}
+
 header,
 footer {
   background-image: linear-gradient(45deg, #613DC1, #7454C9);
@@ -279,6 +284,14 @@ text-align: center;
   background-color: #F2EFFA;
   color: #613DC1;
   text-align: center;
+}
+
+.doctor {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+
 }
 
 
