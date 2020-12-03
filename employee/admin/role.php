@@ -8,6 +8,7 @@ if(!isset($_SESSION['user_id'])){
 }
 
 if (auth([1], $link)) {
+  // TODO: add the rest of the html to this
   echo <<<"EOT"
   <table>
     <tr>

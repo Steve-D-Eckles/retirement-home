@@ -1,5 +1,3 @@
-// Global XMLHttpRequest
-
 const getName = () => {
   const id = pid.value
   const http = new window.XMLHttpRequest()

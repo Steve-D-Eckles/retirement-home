@@ -167,7 +167,8 @@ header h1 {
 
 /** Centering **/
 .centered-form-wrap,
-.home-links {
+.home-links,
+.roster-table {
   align-items: center;
   display: flex;
   flex-direction: column;
