@@ -22,7 +22,7 @@ echo <<< "EOT"
     <!-- Register Form -->
 
 
-    <section class="auth">
+    <section class="centered-form-wrap">
     <h1>Register</h1>
 
       <form class="form-style register" action="php/register.php" method="post">
@@ -63,7 +63,7 @@ echo <<< "EOT"
     <footer>
       <p>Retirement Home</p>
     </footer>
-    
+
   </body>
 </html>
 EOT;

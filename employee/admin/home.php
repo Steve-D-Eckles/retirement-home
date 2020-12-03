@@ -20,10 +20,15 @@ if (auth([1, 2], $link)) {
         <a href="home.php">Home</a>
       </nav>
     </header>
-    <h1>Admin Home</h1>
-    <a href="role.php">View / Add Roles</a>
-    <a href="../super/add-info.php">Add Patient Info</a>
-    <a href="../super/approve.php">Approve Pending Registrations</a>
+    <main class='home-links'>
+      <h1>Admin Home</h1>
+      <nav>
+        <a href="role.php">View / Add Roles</a>
+        <a href="../super/add-info.php">Add Patient Info</a>
+        <a href="../super/approve.php">Pending Registrations</a>
+        <a href="../super/create-roster.php">Create a Roster</a>
+      </nav>
+    </main>
     <footer>
       <p>Retirement Home</p>
     </footer>

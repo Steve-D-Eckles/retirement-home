@@ -11,13 +11,14 @@ if (auth([1, 2], $link)) {
   <body>
     <header>
       <a href="../../index.html">Logout</a>
-
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
     </header>
-    <form class='form-style' action='create-roster-submit.php' method='post'>
-      <label>Date:
+    <section class="centered-form-wrap">
+      <h1>Create a Roster</h1>
+      <form class='form-style' action='create-roster-submit.php' method='post'>
+        <label>Date:
   EOT;
   echo "<input type='date' name='date' value='" . date('Y-m-d') . "'></label>";
 
@@ -61,6 +62,7 @@ if (auth([1, 2], $link)) {
       </label>
     EOT;
   }
+
   select('Supervisor', 'super', $supers);
   select('Doctor', 'doctor', $doctors);
   select('Caregiver 1', 'cgone', $caregivers);
@@ -69,11 +71,13 @@ if (auth([1, 2], $link)) {
   select('Caregiver 4', 'cgfour', $caregivers);
 
   echo <<<"EOT"
-      <input type='submit' value='Submit'>
-    </form>
+        <input type='submit' value='Submit'>
+      </form>
+    </section>
     <footer>
       <p>Retirement Home</p>
     </footer>
+  </body>
   EOT;
 }
 ?>

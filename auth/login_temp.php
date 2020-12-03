@@ -21,7 +21,7 @@ echo <<< "EOT"
     <!-- Login Form -->
 
 
-    <section class="auth">
+    <section class="centered-form-wrap">
       <h1>Login</h1>
 
       <form class="form-style" action="php/login.php" method="post">
@@ -41,7 +41,7 @@ echo <<< "EOT"
     <footer>
       <p>Retirement Home</p>
     </footer>
-    
+
   </body>
 </html>
 EOT;
