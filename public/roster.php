@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if (!$_SESSION['loggedin']) {
+  header("Location:../auth/login_temp.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -12,7 +19,7 @@
   <body>
 
     <header>
-      <a href="../../index.html">Logout</a>
+      <a href="../auth/php/logout.php">Logout</a>
 
       <nav class="nav">
         <a href="home.php">Home</a>
