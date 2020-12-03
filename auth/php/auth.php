@@ -20,8 +20,7 @@ function auth($targets, $link) {
 
 function redirect_by_role($role_id){
   if($role_id == 1){
-    //header('Location:');
-    //exit;
+    header('Location:../../employee/admin/home.php');
   }
   if($role_id == 2){
     header('Location:../../employee/super/home.php');
