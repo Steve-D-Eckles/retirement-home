@@ -93,10 +93,10 @@ CREATE TABLE appointments (
   patient_id BIGINT NOT NULL,
   doctor_id BIGINT NOT NULL,
   appt_date DATE NOT NULL,
-  comment TEXT,
-  morn_med VARCHAR(100),
-  afternoon_med VARCHAR(100),
-  night_med VARCHAR(100),
+  comment TEXT DEFAULT NULL,
+  morn_med VARCHAR(100) DEFAULT NULL,
+  afternoon_med VARCHAR(100) DEFAULT NULL,
+  night_med VARCHAR(100) DEFAULT NULL,
 
   FOREIGN KEY (patient_id)
     REFERENCES users (user_id)
@@ -104,9 +104,12 @@ CREATE TABLE appointments (
 
   FOREIGN KEY (doctor_id)
     REFERENCES users (user_id)
-    ON DELETE CASCADE
+    ON DELETE CASCADE,
+
+  UNIQUE (patient_id, appt_date)
 );
 
+-- Table for the daily roster
 CREATE TABLE roster (
   roster_date DATE PRIMARY KEY,
   supervisor_id BIGINT NOT NULL,
