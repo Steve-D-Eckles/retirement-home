@@ -22,7 +22,7 @@ if (!$_SESSION['loggedin']) {
       <a href="../auth/php/logout.php">Logout</a>
 
       <nav class="nav">
-        <a href="home.php">Home</a>
+        <a href="#">Home</a>
       </nav>
 
     </header>
