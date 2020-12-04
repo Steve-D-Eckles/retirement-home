@@ -126,10 +126,10 @@ if (auth([3], $link)) {
                       </tr>
 
                       <tr class="row">
-                        <td class='check'><input name='comment'></td>
-                        <td class='check'><input name='morn_med'></td>
-                        <td class='check'><input name='afternoon_med'></td>
-                        <td class='check'><input name='night_med'></td>
+                        <td class='check'><input name='comment' required></td>
+                        <td class='check'><input name='morn_med' required></td>
+                        <td class='check'><input name='afternoon_med' required></td>
+                        <td class='check'><input name='night_med' required></td>
                         <td><button class='check-submit' name='appt_id' type="submit" value="$appt_id">Enter</td>
                       </tr>
                     </table>

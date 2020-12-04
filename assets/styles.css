@@ -6,6 +6,7 @@
 }
 body{
   background-color: #FFFFFF;
+  height: 70em;
 }
 
 li {
@@ -16,6 +17,11 @@ h2 {
   color: #613DC1;
   margin-top: 1em;
 }
+
+section, main {
+  min-height: 54em;
+}
+
 
 header,
 footer {
@@ -29,7 +35,7 @@ footer {
 }
 
 footer {
-  position: absolute;
+  position: sticky;
   bottom: 0px;
   display: flex;
   justify-content: center;
@@ -184,7 +190,6 @@ header h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 5em;
 }
 
 
@@ -308,8 +313,6 @@ text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 3em;
-  height: 100%;
 }
 
 .patient article {
