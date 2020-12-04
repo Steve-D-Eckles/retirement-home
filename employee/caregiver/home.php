@@ -50,6 +50,19 @@ if (auth([1, 4], $link)) {
     <input type="submit" value="submit">
     </form>
 
+    <form action="checklist.php" method="post">
+    <table class='checklist'>
+      <tr class="row">
+        <th>Name</th>
+        <th>Morning Medicine</th>
+        <th>Afternoon Medicine</th>
+        <th>Night Medicine</th>
+        <th>Breakfast</th>
+        <th>Lunch</th>
+        <th>Dinner</th>
+        <th>Submit</th>
+      </tr>
+
   EOT;
 
   //Grabs checklist info by user id and the date
@@ -71,18 +84,6 @@ if (auth([1, 4], $link)) {
           while ($stmt->fetch()) {
 
             echo <<<"EOT"
-            <form action="checklist.php" method="post">
-            <table class='checklist'>
-              <tr class="row">
-                <th>Name</th>
-                <th>Morning Medicine</th>
-                <th>Afternoon Medicine</th>
-                <th>Night Medicine</th>
-                <th>Breakfast</th>
-                <th>Lunch</th>
-                <th>Dinner</th>
-                <th>Submit</th>
-              </tr>
               <tr class="row">
                 <td><div>$patient_fname $patient_lname</div></td>
                 <td class='check'><input class='checkbox' type='checkbox' name='morn_med' value=$morn_med></td>
@@ -93,14 +94,15 @@ if (auth([1, 4], $link)) {
                 <td class='check'><input class='checkbox' type='checkbox' name='dinner' value=$dinner></td>
                 <td><button class='check-submit' name='list_id' type="submit" value="$list_id">Enter</td>
               </tr>
-            </table>
-            </form>
+
             EOT;
           }
         }
       }
 
   echo <<<"EOT"
+    </table>
+    </form>
     </section>
 
     <footer>

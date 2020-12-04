@@ -144,6 +144,12 @@ header h1 {
   text-decoration: none;
   text-align:center;
   width: 20%;
+  margin: .25em;
+}
+
+.home-links h1 {
+  color: #613DC1;
+  margin-bottom: 1em;
 }
 
 .home-links nav a:hover {

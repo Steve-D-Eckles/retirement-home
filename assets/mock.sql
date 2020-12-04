@@ -18,7 +18,8 @@ VALUES ('alex', 'admin', 'alex@admin.com', '$2y$10$lubrrjNXcgMzdAX/Bfy8Q.3ECfqnO
        ('chelsea', 'caregiver', 'chelsea@caregiver.com', '$2y$10$VHQgoKAJ82TZxy31baVLKezq6Tl5D/pRA5nkdKRvPjHKXQ7uhv6Mu', '5555555', '1900-01-01', 4, 1),
        ('percy', 'patient', 'percy@patient.com', '$2y$10$jKlbNd48PBoOx/1mOQPYgOr6hUySSdxVrDwPrPlREZvGSjuVuvqbK', '5555555', '1900-01-01', 5, 1),
        ('prudence', 'patient', 'prudence@patient.com', '$2y$10$hmYr1ytaOox39hsB.ZJ8dO2MJVku6WViwpmvM3nvplwN2HxTjK.9G', '5555555', '1900-01-01', 5, 0),
-       ('frank', 'family', 'frank@family.com', '$2y$10$1yKhdPu1FOiGPGmZ8v7fzumbuydyYhtFs6RCEV0OHvQq7WoYTNMMq', '5555555', '1900-01-01', 6, 1);
+       ('frank', 'family', 'frank@family.com', '$2y$10$1yKhdPu1FOiGPGmZ8v7fzumbuydyYhtFs6RCEV0OHvQq7WoYTNMMq', '5555555', '1900-01-01', 6, 1),
+       ('dave', 'doctor', 'dave@doctor.com', '$2y$10$EZ0LVsgHfStGgfS.0FAFOugY2iYoiv9LDJ1q7/5K1nE9EE1CCPeqW', '5555555', '1900-01-01', 3, 1);
 
 INSERT INTO patients (patient_id, family_code, emergency_contact, ec_relation, group_id, admit_date, due)
 VALUES (8, 'famcode', 'Frank Family', 'Second Cousin', 1, '1900-01-01', 290),
@@ -41,7 +42,14 @@ VALUES (8, 4, '2020-11-09', 1, 1, 1, 1, 1, 1),
 INSERT INTO appointments (patient_id, doctor_id, appt_date, comment, morn_med,
                           afternoon_med, night_med)
 VALUES (8, 3, '2020-11-09', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
-       (8, 3, CURDATE(), NULL, NULL, NULL, NULL);
+       (9, 3, '2020-11-15', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
+       (8, 3, CURDATE(), NULL, NULL, NULL, NULL),
+       (9, 3, CURDATE(), NULL, NULL, NULL, NULL),
+       (8, 11, '2020-11-27', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
+       (9, 11, '2020-11-30', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
+       (8, 11, CURDATE(), NULL, NULL, NULL, NULL),
+       (9, 11, CURDATE(), NULL, NULL, NULL, NULL);
+
 
 INSERT INTO roster (roster_date, supervisor_id, doctor_id, care_one_id, care_two_id,
                     care_three_id, care_four_id)

@@ -77,7 +77,6 @@ if (auth([3], $link)) {
   // Makes a row for every patients checklist
   while ($stmt->fetch()) {
     echo <<<"EOT"
-
         <tr class="row">
           <td>$patient_fname $patient_lname</td>
           <td class='check'>$date</td>
@@ -97,6 +96,7 @@ echo <<<"EOT"
 
       <h2>Upcoming Appointments</h2>
 
+      <form action="patient_of_doc.php" method="post">
       <table class='checklist'>
         <tr class="row">
           <th>Name</th>
@@ -106,7 +106,7 @@ echo <<<"EOT"
     EOT;
 
     //Grabs appointments info by user id and the date
-      if ($stmt = $link->prepare('SELECT u.first_name, u.last_name, appt_date
+      if ($stmt = $link->prepare('SELECT u.user_id, u.first_name, u.last_name, appt_date
                                   FROM appointments AS a
                                   JOIN users AS u
                                   ON a.patient_id = u.user_id
@@ -117,7 +117,7 @@ echo <<<"EOT"
           $stmt->store_result();
 
           if ($stmt->num_rows > 0) {
-            $stmt->bind_result($patient_fname, $patient_lname, $date);
+            $stmt->bind_result($p_id, $patient_fname, $patient_lname, $date);
 
 
     // Makes a row for every patients checklist
@@ -125,7 +125,10 @@ echo <<<"EOT"
       echo <<<"EOT"
 
           <tr class="row">
-            <td><a href="patient_of_doc.php">$patient_fname $patient_lname</a></td>
+            <td>
+              <button class='check-submit' name='p_id' type="submit" value="$p_id">
+              $patient_fname $patient_lname
+            </td>
             <td class='check'>$date</td>
           </tr>
 
