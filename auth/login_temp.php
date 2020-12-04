@@ -22,6 +22,7 @@ echo <<< "EOT"
 
 
     <section class="centered-form-wrap">
+    
       <h1>Login</h1>
 
       <form class="form-style" action="php/login.php" method="post">
@@ -35,6 +36,8 @@ echo <<< "EOT"
         <input type="submit" value="Submit">
 
       </form>
+
+      <p><a href="../public/family-member/home.php">Family Member?</a></p>
 
     </section>
 

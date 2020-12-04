@@ -41,6 +41,7 @@ if ($stmt = $link->prepare('SELECT caregiver_id, morn_med, afternoon_med, night_
       $breakfast = done($breakfast);
       $lunch = done($lunch);
       $dinner = done($dinner);
+
   }else{
     $morn_med = "";
     $afternoon_med = "";
@@ -50,7 +51,6 @@ if ($stmt = $link->prepare('SELECT caregiver_id, morn_med, afternoon_med, night_
     $dinner = "";
     $caregiver_name = "";
     $caregiver_id = NULL;
-
   }
 
   $stmt->close();
