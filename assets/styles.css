@@ -16,6 +16,7 @@ li {
 h2 {
   color: #613DC1;
   margin-top: 1em;
+  font-size: 2em;
 }
 
 section, main {
@@ -34,8 +35,12 @@ footer {
   box-shadow: 0px 2px 3px black;
 }
 
-footer {
+header {
   position: sticky;
+  top: 0px;
+}
+
+footer {
   bottom: 0px;
   display: flex;
   justify-content: center;
@@ -167,19 +172,28 @@ header h1 {
 .form-style {
   display: flex;
   flex-direction: column;
-  width: 18em;
-
-
+  width: 30em;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  color: #613DC1;
 }
 .form-style * {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #613DC1;;
   display: flex;
   justify-content: space-between;
   margin-top: .5em;
+  font-size: 1.25em;
 }
 
 .form-style input {
-  border: 1px solid black;
+  border: 1px solid #613DC1;
+  padding: .25em;
+  color: #613DC1;
+}
+
+.form-style input:last-child {
+  justify-content: center;
+  color: #E2FDFF;
 }
 
 /** Centering **/
@@ -197,6 +211,7 @@ header h1 {
 
 .checklist {
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 .checklist tr th,
@@ -280,6 +295,10 @@ text-align: center;
   text-align: center;
 }
 
+.row td {
+  color: #613DC1;
+}
+
 /** Doctors **/
 
 .doctors {
@@ -325,4 +344,9 @@ text-align: center;
   background-image: linear-gradient(45deg, #613DC1, #7454C9);
   color: #E2FDFF;
   padding: .5em 2em .5em 2em;
+}
+
+/** link **/
+.link {
+  color: #613DC1;
 }

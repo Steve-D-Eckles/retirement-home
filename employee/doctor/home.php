@@ -42,7 +42,7 @@ if (auth([3], $link)) {
     <label for="date">$date</label><br>
     <input type="date" name="date" value="date">
 
-    <input type="submit" value="submit">
+    <input class="check-submit" type="submit" value="submit">
     </form>
 
     <h2>Past Appointments</h2>

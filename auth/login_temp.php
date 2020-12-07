@@ -13,6 +13,8 @@ echo <<< "EOT"
     <header>
       <a href="../index.html">Back</a>
 
+      <h1>Login</h1>
+
       <nav class="nav">
         <a href="../index.html">Home</a>
       </nav>
@@ -22,8 +24,8 @@ echo <<< "EOT"
 
 
     <section class="centered-form-wrap">
-    
-      <h1>Login</h1>
+
+    <h2> Welcome </h2>
 
       <form class="form-style" action="php/login.php" method="post">
 
@@ -33,11 +35,11 @@ echo <<< "EOT"
         <label for="password">Password</label>
         <input type="password" name="password" required/>
 
-        <input type="submit" value="Submit">
+        <input class='check-submit' type="submit" value="Submit">
 
       </form>
 
-      <p><a href="../public/family-member/home.php">Family Member?</a></p>
+      <p><a class="link" href="../public/family-member/home.php">Family Member?</a></p>
 
     </section>
 
