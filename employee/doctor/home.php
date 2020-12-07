@@ -15,9 +15,10 @@ $user_id = $_SESSION['user_id'];
 $first_name = ucfirst($first_name);
 $last_name = ucfirst($last_name);
 $date = date("Y/m/d");
+$till_date = date("Y/m/d");
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-  $date = $_POST['date'];
+  $till_date = $_POST['till_date'];
 }
 
 if (auth([3], $link)) {
@@ -37,10 +38,12 @@ if (auth([3], $link)) {
     </header>
 
     <section class='doctor'>
+
+    <h2> Till Date </h2>
     <form class="form-style register" action="home.php" method="post">
 
-    <label for="date">$date</label><br>
-    <input type="date" name="date" value="date">
+    <label for="till_date">$till_date</label><br>
+    <input type="date" name="till_date" value="till_date">
 
     <input class="check-submit" type="submit" value="submit">
     </form>
@@ -101,23 +104,25 @@ echo <<<"EOT"
         <tr class="row">
           <th>Name</th>
           <th>Date</th>
+          <th>Done</th>
         </tr>
 
     EOT;
 
     //Grabs appointments info by user id and the date
-      if ($stmt = $link->prepare('SELECT u.user_id, u.first_name, u.last_name, appt_date
+      if ($stmt = $link->prepare('SELECT u.user_id, u.first_name, u.last_name, appt_date, comment
                                   FROM appointments AS a
                                   JOIN users AS u
                                   ON a.patient_id = u.user_id
                                   WHERE doctor_id = ?
-                                  AND appt_date > ?')) {
-          $stmt->bind_param('is', $user_id, $date);
+                                  AND appt_date > ?
+                                  AND appt_date <= ?')) {
+          $stmt->bind_param('iss', $user_id, $date, $till_date);
           $stmt->execute();
           $stmt->store_result();
 
           if ($stmt->num_rows > 0) {
-            $stmt->bind_result($p_id, $patient_fname, $patient_lname, $date);
+            $stmt->bind_result($p_id, $patient_fname, $patient_lname, $date, $comment);
 
 
     // Makes a row for every patients checklist
@@ -130,6 +135,17 @@ echo <<<"EOT"
               $patient_fname $patient_lname
             </td>
             <td class='check'>$date</td>
+
+
+            EOT;
+
+
+              if($comment){
+                echo <<<"EOT"
+                <td class='check'>
+                EOT;
+              }
+
           </tr>
 
       EOT;

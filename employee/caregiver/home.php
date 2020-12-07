@@ -42,13 +42,13 @@ if (auth([1, 4], $link)) {
     </header>
 
     <section class='patient'>
-    <form class="form-style register" action="home.php" method="post">
+      <form class="form-style register" action="home.php" method="post">
 
-    <label for="date">$date</label><br>
-    <input type="date" name="date" value="date">
+      <label for="date">$date</label><br>
+      <input type="date" name="date" value="date">
 
-    <input type="submit" value="submit">
-    </form>
+      <input class="check-submit" type="submit" value="submit">
+      </form>
 
     <form action="checklist.php" method="post">
     <table class='checklist'>
