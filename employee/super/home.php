@@ -16,12 +16,14 @@ if (auth([1, 2], $link)) {
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
 
+      <h1>Supervisor Home</h1>
+      
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
     </header>
     <main class='home-links'>
-      <h1>Supervisor Home</h1>
+
       <nav>
         <a href="add-info.php">Add Patient Info</a>
         <a href="approve.php">Pending Registrations</a>

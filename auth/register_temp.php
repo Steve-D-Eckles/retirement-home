@@ -14,6 +14,8 @@ echo <<< "EOT"
     <header>
       <a href="../index.html">Back</a>
 
+      <h1>Register</h1>
+      
       <nav class="nav">
         <a href="../index.html">Home</a>
       </nav>
@@ -23,7 +25,7 @@ echo <<< "EOT"
 
 
     <section class="centered-form-wrap">
-    <h1>Register</h1>
+
 
       <form class="form-style register" action="php/register.php" method="post">
 
