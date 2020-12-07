@@ -5,7 +5,6 @@ const getResults = () => {
   const http = new window.XMLHttpRequest()
   http.onreadystatechange = function () {
     if (this.readyState === 4 && this.status === 200) {
-      console.log(this.responseText)
       const rosterData = JSON.parse(this.responseText)
       const row = document.createElement('tr')
       row.setAttribute('id', 'name-row')
