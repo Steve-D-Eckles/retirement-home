@@ -30,6 +30,7 @@ if (auth([1], $link)) {
         <a href="../super/approve.php">Pending Registrations</a>
         <a href="../super/create-roster.php">Create a Roster</a>
         <a href="../../public/roster.php">View Rosters</a>
+        <a href="../super/create-appointment.php">Create Doctors' Appointments</a>
       </nav>
     </main>
     <footer>

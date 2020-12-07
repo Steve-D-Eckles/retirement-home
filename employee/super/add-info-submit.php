@@ -8,8 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && auth([1, 2], $link)) {
   $group = isset($_POST['group']) ? (int) $_POST['group'] : NULL;
   $date = isset($_POST['date']) ? $_POST['date'] : NULL;
 
-  echo "$id $group $date \n";
-
   if ($id === NULL || $group === NULL || $date === NULL) {
     exit('Required data missing');
   }
