@@ -42,6 +42,9 @@ if (auth([1, 4], $link)) {
     </header>
 
     <section class='patient'>
+
+      <h2> Date </h2>
+
       <form class="form-style register" action="home.php" method="post">
 
       <label for="date">$date</label><br>
