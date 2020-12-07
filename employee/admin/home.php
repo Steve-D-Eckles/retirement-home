@@ -11,6 +11,7 @@ if (auth([1], $link)) {
   echo <<<"EOT"
   <head>
     <link rel="stylesheet" href="../../assets/styles.css">
+    <title>Admin Home</title>
   </head>
   <body>
     <header>

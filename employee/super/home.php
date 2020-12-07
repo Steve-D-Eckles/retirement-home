@@ -11,13 +11,14 @@ if (auth([1, 2], $link)) {
   echo <<<"EOT"
   <head>
     <link rel="stylesheet" href="../../assets/styles.css">
+    <title>Supervisor Home</title>
   </head>
   <body>
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
 
       <h1>Supervisor Home</h1>
-      
+
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>

@@ -12,6 +12,7 @@ if (auth([1, 2], $link)) {
   echo <<<"EOT"
   <head>
     <link rel="stylesheet" href="../../assets/styles.css">
+    <title>Pending Registrations</title>
   </head>
   <body>
     <header>

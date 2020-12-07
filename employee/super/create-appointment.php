@@ -11,6 +11,7 @@ if (auth([1, 2], $link)) {
   echo <<<"EOT"
   <head>
     <link rel="stylesheet" href="../../assets/styles.css">
+    <title>Create Appointments</title>
     <script type="text/javascript" src="info.js" defer></script>
   </head>
   <body>
