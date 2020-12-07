@@ -113,7 +113,7 @@ echo <<< "EOT"
   </head>
   <body>
     <header>
-      <a href="../../auth/php/logout.php">Logout</a>
+      <a href="../../auth/login_temp.php">Back</a>
 
       <h1>Family's Home</h1>
 
@@ -124,6 +124,9 @@ echo <<< "EOT"
     </header>
 
     <section class="centered-form-wrap">
+
+      <h2> Patient Search </h2>
+
       <form class="form-style register" action="home.php" method="post">
         <label for="date">Date</label>
         <input type="date" name="date" required/>
@@ -132,10 +135,10 @@ echo <<< "EOT"
         <input type="text" name="family_code" required/>
 
 
-        <label for="patient_id">Patient_ID</label>
+        <label for="patient_id">Patient ID</label>
         <input type="text" name="patient_id" required/>
 
-        <input id="submit" type="submit" value="Submit">
+        <input class="check-submit" id="submit" type="submit" value="Submit">
       </form>
 EOT;
 
