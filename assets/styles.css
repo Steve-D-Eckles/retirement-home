@@ -331,11 +331,20 @@ text-align: center;
 }
 
 .scrollable {
-  height: 30vh;
+  position: relative;
   overflow: auto;
+  height: 30vh;
 }
 
+.scrollable thead th {
+  height: 5vh;
+  position: sticky;
+  top: 0;
+}
 
+.scrollable tbody td {
+  height: 5vh;
+}
 
 /** Patient **/
 .patient {

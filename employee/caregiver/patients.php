@@ -54,7 +54,8 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
         <button type="button" id='reset'>Reset</button>
       </form>
 
-      <table class='doctors scrollable'>
+      <div class='scrollable'>
+      <table class='doctors'>
         <thead>
           <tr>
             <th>ID</th>
@@ -95,6 +96,7 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
           ?>
         </tbody>
       </table>
+    </div>
     </main>
 
     <footer>
