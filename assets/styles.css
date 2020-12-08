@@ -330,6 +330,11 @@ text-align: center;
 
 }
 
+.scrollable {
+  height: 30vh;
+  overflow: auto;
+}
+
 
 
 /** Patient **/
