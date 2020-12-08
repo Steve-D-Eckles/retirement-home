@@ -125,34 +125,35 @@ echo <<<"EOT"
             $stmt->bind_result($p_id, $patient_fname, $patient_lname, $date, $comment);
 
 
-    // Makes a row for every patients checklist
-    while ($stmt->fetch()) {
-      echo <<<"EOT"
+            // Makes a row for every patients checklist
+            while ($stmt->fetch()) {
+              echo <<<"EOT"
 
-          <tr class="row">
-            <td>
-              <button class='check-submit' name='p_id' type="submit" value="$p_id">
-              $patient_fname $patient_lname
-            </td>
-            <td class='check'>$date</td>
+                  <tr class="row">
+                    <td>
+                      <button class='check-submit' name='p_id' type="submit" value="$p_id">
+                      $patient_fname $patient_lname
+                    </td>
+                    <td class='check'>$date</td>
 
-
-            EOT;
+              EOT;
 
 
               if($comment){
                 echo <<<"EOT"
-                <td class='check'>
+                <td class='check'> &#x2713 </td>
+                EOT;
+              }else{
+                echo <<<"EOT"
+                <td class='check'>  </td>
                 EOT;
               }
 
-          </tr>
-
-      EOT;
-      }
-    }
-  }
+            }
+          }
+        }
   echo <<<"EOT"
+          </tr>
         </table>
 
       </section>
