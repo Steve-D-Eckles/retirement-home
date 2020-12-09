@@ -3,32 +3,26 @@ require_once '../../auth/php/config.php';
 require_once '../../auth/php/auth.php';
 
 session_start();
-if (auth([1, 2, 3, 4], $link)) {
+if (auth([1, 2], $link)) {
   $criteria = [];
   if (isset($_POST['id']) && $_POST['id']) $criteria['user_id'] = (string) $_POST['id'];
-  if (isset($_POST['age']) && $_POST['age'] !== '') $criteria['age'] = $_POST['age'];
-  if (isset($_POST['contact_name']) && $_POST['contact_name']) $criteria['emergency_contact'] = $_POST['contact_name'];
-  if (isset($_POST['contact_rel']) && $_POST['contact_rel']) $criteria['ec_relation'] = $_POST['contact_rel'];
-  if (isset($_POST['date']) && $_POST['date']) $criteria['admit_date'] = $_POST['date'];
+  if (isset($_POST['salary']) && $_POST['salary'] !== '') $criteria['salary'] = $_POST['salary'];
+  if (isset($_POST['role']) && $_POST['role']) $criteria['role_name'] = $_POST['role'];
   if (isset($_POST['name']) && $_POST['name']) $criteria['name'] = $_POST['name'];
 
   if ($criteria) {
-    $query = "SELECT user_id, first_name, last_name, emergency_contact, ec_relation,
-                     admit_date, CONCAT(CONCAT(UCASE(LEFT(first_name, 1)),
+    $query = "SELECT user_id, salary, role_name,
+                     CONCAT(CONCAT(UCASE(LEFT(first_name, 1)),
                      SUBSTRING(first_name, 2)), ' ', CONCAT(UCASE(LEFT(last_name, 1)),
-                     SUBSTRING(last_name, 2))) AS name,
-                     TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age
-                     FROM users u JOIN patients p ON u.user_id = p.patient_id
-                     WHERE confirmed = 1 AND admit_date IS NOT NULL ";
+                     SUBSTRING(last_name, 2))) AS name
+                     FROM users u JOIN employees e ON u.user_id = e.employee_id
+                     JOIN roles r ON r.role_id = u.role
+                     WHERE confirmed = 1 ";
     $bind = [''];
     foreach ($criteria as $col=>$val) {
       if ($col === 'name') {
         $query .= "HAVING name LIKE CONCAT('%', ?, '%')";
         $bind[0] .= 's';
-        $bind[] = $val;
-      } elseif ($col === 'age') {
-        $query .= "AND TIMESTAMPDIFF(YEAR, dob, CURDATE()) = ? ";
-        $bind[0] .= 'i';
         $bind[] = $val;
       } else {
         $query .= "AND $col LIKE CONCAT('%', ?, '%') ";

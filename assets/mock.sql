@@ -2,9 +2,9 @@ USE retirement;
 
 INSERT INTO roles (role_name, access_level)
 VALUES ('admin', 1),
-       ('super', 2),
+       ('supervisor', 2),
        ('doctor', 3),
-       ('caretaker', 4),
+       ('caregiver', 4),
        ('patient', 5),
        ('family', 6);
 

@@ -32,6 +32,8 @@ if (auth([1, 2], $link)) {
         <a href="../../public/roster.php">View Rosters</a>
         <a href="create-appointment.php">Create Doctors' Appointments</a>
         <a href="../admin/missed-activity-report.php">Missed Activity Report</a>
+        <a href="../caregiver/patients.php">Patient Search</a>
+        <a href="employee-search.php">Employee Search</a>
       </nav>
     </main>
     <footer>
