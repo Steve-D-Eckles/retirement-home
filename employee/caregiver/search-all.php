@@ -9,7 +9,7 @@ if(session_id() == '' || !isset($_SESSION)) {
 
 if (auth([1, 2, 3, 4], $link)) {
   if ($stmt = $link->prepare("SELECT user_id, first_name, last_name,
-                                     CONCAT(first_name, ' ', last_name) AS name,
+                                     CONCAT(CONCAT(UCASE(LEFT(first_name, 1)), SUBSTRING(first_name, 2)), ' ', CONCAT(UCASE(LEFT(last_name, 1)), SUBSTRING(last_name, 2))) AS name,
                                      TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age,
                                      emergency_contact, ec_relation, admit_date
                               FROM users u JOIN patients p ON u.user_id = p.patient_id

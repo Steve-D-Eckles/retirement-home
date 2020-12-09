@@ -337,6 +337,8 @@ text-align: center;
 
 }
 
+/** Scrolling Tables **/
+
 .scrollable {
   position: relative;
   overflow: auto;
@@ -351,6 +353,29 @@ text-align: center;
 
 .scrollable tbody td {
   height: 5vh;
+}
+
+/** Search Form **/
+.search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-form label {
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.1rem 0 0.1rem 0;
+  padding-bottom: 0.1rem;
+}
+
+.search-form label input {
+  margin-left: 0.3rem;
+}
+
+.search-form button {
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 /** Patient **/

@@ -14,7 +14,9 @@ if (auth([1, 2, 3, 4], $link)) {
 
   if ($criteria) {
     $query = "SELECT user_id, first_name, last_name, emergency_contact, ec_relation,
-                     admit_date, CONCAT(first_name, ' ', last_name) AS name,
+                     admit_date, CONCAT(CONCAT(UCASE(LEFT(first_name, 1)),
+                     SUBSTRING(first_name, 2)), ' ', CONCAT(UCASE(LEFT(last_name, 1)),
+                     SUBSTRING(last_name, 2))) AS name,
                      TIMESTAMPDIFF(YEAR, dob, CURDATE()) AS age
                      FROM users u JOIN patients p ON u.user_id = p.patient_id
                      WHERE confirmed = 1 AND admit_date IS NOT NULL ";
