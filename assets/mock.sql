@@ -46,9 +46,7 @@ VALUES (8, 3, '2020-11-09', 'Pain levels unchanged', 'advil', 'advil', 'advil PM
        (8, 3, CURDATE(), NULL, NULL, NULL, NULL),
        (9, 3, CURDATE(), NULL, NULL, NULL, NULL),
        (8, 11, '2020-11-27', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
-       (9, 11, '2020-11-30', 'Pain levels unchanged', 'advil', 'advil', 'advil PM'),
-       (8, 11, CURDATE(), NULL, NULL, NULL, NULL),
-       (9, 11, CURDATE(), NULL, NULL, NULL, NULL);
+       (9, 11, '2020-11-30', 'Pain levels unchanged', 'advil', 'advil', 'advil PM');
 
 
 INSERT INTO roster (roster_date, supervisor_id, doctor_id, care_one_id, care_two_id,
