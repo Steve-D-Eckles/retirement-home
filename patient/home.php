@@ -181,6 +181,7 @@ function done($task){
     return "&#x2713";
   }
 }
+
 function get_name_by_id($id, $link){
   if ($stmt = $link->prepare('SELECT first_name, last_name
                               FROM users

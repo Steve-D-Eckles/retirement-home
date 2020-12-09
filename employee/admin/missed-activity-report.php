@@ -24,16 +24,13 @@ if (auth([1, 2], $link)) {
     </header>
     <section class="centered-form-wrap">
 
-
-
     <form class="form-style register" action="missed-activity-report.php" method="post">
       <label for="date">Date</label>
       <input type="date" name="date" required/>
       <input class="check-submit" id="submit" type="submit" value="Submit">
     </form>
+  EOT;
 
-
-EOT;
   if($_SERVER["REQUEST_METHOD"] == "POST"){
 
       $date = $_POST['date'];
@@ -54,7 +51,7 @@ EOT;
               </tr>
         EOT;
 
-        // Return string for Done or Uncompleted
+        // Return string for Done or Uncompleted for checklists
         function checklist_info($task){
           if($task === 0){
             return "X";
@@ -79,8 +76,9 @@ EOT;
 
             if ($stmt->num_rows > 0) {
               $stmt->bind_result($caregiver_id, $morn_med, $afternoon_med, $night_med, $breakfast, $lunch, $dinner);
-              while ($stmt->fetch()) {
 
+              // shows row for every checklist with a null column
+              while ($stmt->fetch()) {
 
                 if ($stmt = $link->prepare('SELECT first_name, last_name
                                             FROM users
@@ -96,7 +94,6 @@ EOT;
                       $caregiver_name = ucfirst($fname) . " " . ucfirst($lname);
                     }
                   }
-
 
                 $morn_med = checklist_info($morn_med);
                 $afternoon_med = checklist_info($afternoon_med);
@@ -118,15 +115,14 @@ EOT;
                 </tr>
 
                 EOT;
-
-
               }
 
-              }
             }
+          }
 
-            $stmt->close();
-        echo <<<"EOT"
+          $stmt->close();
+
+          echo <<<"EOT"
 
             </table>
             <h2> Missed Appointment Info </h2>
@@ -140,7 +136,7 @@ EOT;
                 <th>Afternoon Medicine</th>
                 <th>Night Medicine</th>
               </tr>
-        EOT;
+          EOT;
 
         function get_name_by_id($id, $link){
           if ($stmt = $link->prepare('SELECT first_name, last_name
@@ -162,7 +158,7 @@ EOT;
           }
         }
 
-        // Return string for Done or Uncompleted
+        // Return string for Done or Uncompleted for appointments
         function appointment_info($task){
           if($task == NULL){
             return "X";
@@ -186,10 +182,8 @@ EOT;
             if ($stmt->num_rows > 0) {
               $stmt->bind_result($doc_id, $patient_id, $comment, $morn_med, $afternoon_med, $night_med);
 
-
+              // shows row for every appointment with a null column
               while ($stmt->fetch()) {
-
-
 
                 $patient_name = get_name_by_id($patient_id, $link);
                 $doc_name = get_name_by_id($doc_id, $link);
@@ -198,8 +192,6 @@ EOT;
                   $morn_med = appointment_info($morn_med);
                   $afternoon_med = appointment_info($afternoon_med);
                   $night_med = appointment_info($night_med);
-
-
 
                   echo <<<"EOT"
                     <tr class="row">
@@ -211,23 +203,19 @@ EOT;
                       <td>$night_med</td>
                     </tr>
                   EOT;
-
                 }
               }
               $stmt->close();
           }
+      }
 
-        }
-
-echo <<<'EOT'
-    </table>
-    </section>
-    <footer>
-      <p>Retirement Home</p>
-    </footer>
-  </body>
-  EOT;
-}
-
-
+  echo <<<'EOT'
+      </table>
+      </section>
+      <footer>
+        <p>Retirement Home</p>
+      </footer>
+    </body>
+    EOT;
+  }
 ?>
