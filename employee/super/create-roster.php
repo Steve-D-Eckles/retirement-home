@@ -12,12 +12,15 @@ if (auth([1, 2], $link)) {
   <body>
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
+
+      <h1>Create a Roster</h1>
+      
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
     </header>
     <section class="centered-form-wrap">
-      <h1>Create a Roster</h1>
+
       <form class='form-style' action='create-roster-submit.php' method='post'>
         <label>Date:
   EOT;

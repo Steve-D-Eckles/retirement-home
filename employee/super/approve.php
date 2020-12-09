@@ -18,12 +18,14 @@ if (auth([1, 2], $link)) {
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
 
+      <h1>Pending Registrations</h1>
+
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
     </header>
     <section class='centered-form-wrap'>
-    <h1>Pending Registrations</h1>
+
       <form action='approve-submit.php' method='post'>
         <table class='doctors'>
           <tr>

@@ -18,12 +18,14 @@ if (auth([1, 2], $link)) {
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
 
+      <h1>Create Doctor's Appointment</h1>
+
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
     </header>
     <section class='centered-form-wrap'>
-      <h1>Create Doctor's Appointment</h1>
+
       <form class='form-style' action='create-appointment-submit.php' method='post'>
         <input type="submit" disabled style="display: none" aria-hidden="true">
         <label>Patient ID

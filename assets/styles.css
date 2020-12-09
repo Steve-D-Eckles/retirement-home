@@ -197,7 +197,13 @@ header h1 {
   color: #613DC1;
 }
 
-.form-style input:last-child {
+.form-style select{
+  border: 1px solid #613DC1;
+  padding: .25em;
+  color: #613DC1;
+}
+
+.form-style input[type=submit] {
   justify-content: center;
   color: #E2FDFF;
 }
@@ -236,7 +242,8 @@ header h1 {
   width: 3em;
 }
 
-.check-submit {
+.check-submit,
+.form-style input[type=submit] {
   cursor: pointer;
   appearance: none;
   padding: .2em;

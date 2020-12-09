@@ -21,6 +21,8 @@ if (!$_SESSION['loggedin']) {
     <header>
       <a href="../auth/php/logout.php">Logout</a>
 
+      <h1>Roster</h1>
+
       <nav class="nav">
         <a href="#">Home</a>
       </nav>
@@ -28,7 +30,7 @@ if (!$_SESSION['loggedin']) {
     </header>
 
     <main class="roster-table">
-      <h1>Roster</h1>
+
       <?php
       echo "<input type='date' id='roster-date' value='" . date('Y-m-d') . "'>";
       ?>
