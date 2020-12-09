@@ -1,5 +1,5 @@
 <?php
-function auth($targets, $link) {
+function auth($targets, $link, $redir=true) {
   if (isset($_SESSION['loggedin'])) {
     if ($stmt = $link->prepare('SELECT role FROM users WHERE user_id = ?')) {
       $stmt->bind_param('i', $_SESSION['user_id']);
@@ -9,7 +9,7 @@ function auth($targets, $link) {
       if ($stmt->fetch()) {
         if(in_array($role, $targets)){
           return true;
-        } else {
+        } elseif ($redir) {
           redirect_by_role($role);
         }
       }

@@ -19,7 +19,7 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
   </head>
   <body>
     <header>
-      <a href="../auth/php/logout.php">Logout</a>
+      <a href="../../auth/php/logout.php">Logout</a>
 
       <nav class="nav">
         <a href="home.php">Home</a>

@@ -356,6 +356,18 @@ text-align: center;
 }
 
 /** Search Form **/
+.employee-form-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.employee-form-wrap form {
+  width: 30%;
+}
+
 .search-form {
   display: flex;
   flex-direction: column;
