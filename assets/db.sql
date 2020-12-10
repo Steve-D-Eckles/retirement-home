@@ -46,7 +46,8 @@ CREATE TABLE patients (
   ec_relation VARCHAR(50),
   group_id SMALLINT,
   admit_date DATE,
-  due INT,
+  due INT DEFAULT 0,
+  last_update DATE DEFAULT CURDATE(),
 
   -- patient_id is both a primary and foreign key because patient is a subtype of user
   FOREIGN KEY (patient_id)

@@ -21,9 +21,9 @@ VALUES ('alex', 'admin', 'alex@admin.com', '$2y$10$lubrrjNXcgMzdAX/Bfy8Q.3ECfqnO
        ('frank', 'family', 'frank@family.com', '$2y$10$1yKhdPu1FOiGPGmZ8v7fzumbuydyYhtFs6RCEV0OHvQq7WoYTNMMq', '5555555', '1900-01-01', 6, 1),
        ('dave', 'doctor', 'dave@doctor.com', '$2y$10$EZ0LVsgHfStGgfS.0FAFOugY2iYoiv9LDJ1q7/5K1nE9EE1CCPeqW', '5555555', '1900-01-01', 3, 1);
 
-INSERT INTO patients (patient_id, family_code, emergency_contact, ec_relation, group_id, admit_date, due)
-VALUES (8, 'famcode', 'Frank Family', 'Second Cousin', 1, '1900-01-01', 290),
-       (9, 'famcode', 'Frank Family', 'Second Cousin-in-law', 1, NULL, NULL);
+INSERT INTO patients (patient_id, family_code, emergency_contact, ec_relation, group_id, admit_date, due, last_update)
+VALUES (8, 'famcode', 'Frank Family', 'Second Cousin', 1, '1900-01-01', 290, '2020-01-01'),
+       (9, 'famcode', 'Frank Family', 'Second Cousin-in-law', 1, NULL, 0, CURDATE());
 
 INSERT INTO employees (employee_id, salary)
 VALUES (1, 100000),
