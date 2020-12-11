@@ -14,7 +14,7 @@ if (auth([1], $link)) {
     $stmt->execute();
     $stmt->close();
   }
-  if ($stmt = $link->prepare("SELECT patient_id FROM patients WHERE admit_date IS NOT NULL")) {
+  if ($stmt = $link->prepare("SELECT patient_id FROM patients WHERE admit_date IS NOT NULL AND last_update <> CURDATE()")) {
     $stmt->execute();
     $stmt->store_result();
     $stmt->bind_result($pid);
@@ -29,22 +29,32 @@ if (auth([1], $link)) {
 
 
   if ($stmt = $link->prepare("UPDATE patients
-                              SET due = due + (SELECT 50 * count(appt_id))
+                              SET due = due + IF((SELECT 50 * count(appt_id)
                                                 FROM patients p JOIN appointments a
                                                 ON p.patient_id = a.patient_id
                                                 WHERE a.patient_id = ? AND comment IS NOT NULL
                                                 AND appt_date BETWEEN last_update AND CURDATE()
-                                                GROUP BY a.patient_id)
-                              WHERE patient_id = ? AND admit_date IS NOT NULL") {
+                                                GROUP BY a.patient_id),
+                                                (SELECT 50 * count(appt_id)
+                                                FROM patients p JOIN appointments a
+                                                ON p.patient_id = a.patient_id
+                                                WHERE a.patient_id = ? AND comment IS NOT NULL
+                                                AND appt_date BETWEEN last_update AND CURDATE()
+                                                GROUP BY a.patient_id),
+                                                0),
+                                  last_update = CURDATE()
+                              WHERE patient_id = ? AND admit_date IS NOT NULL")) {
     foreach ($patients as $pid) {
-      $stmt->bind_param('ii', $pid, $pid);
+      $stmt->bind_param('iii', $pid, $pid, $pid);
       $stmt->execute();
     }
     $stmt->close();
   }
 
+
+
   if ($stmt = $link->prepare("SELECT patient_id, due FROM patients
-                              WHERE admit_date IS NOT NULL"))
+                              WHERE admit_date IS NOT NULL")) {
     $stmt->execute();
     $q_res = $stmt->get_result();
     $result = [];

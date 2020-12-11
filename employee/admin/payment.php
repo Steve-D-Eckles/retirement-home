@@ -11,7 +11,7 @@ if (auth([1], $link)) {
   echo <<<"EOT"
   <head>
     <link rel="stylesheet" href="../../assets/styles.css">
-    <script type="text/javascript" src="#"></script>
+    <script type="text/javascript" src="payment.js" defer></script>
   </head>
   <body>
     <header>
@@ -27,23 +27,23 @@ if (auth([1], $link)) {
 
     <section class="centered-form-wrap">
 
-      <form class="form-style register" action="payment.php" method="post">
+      <form class="form-style register">
         <label for="patient_id">Patient ID</label>
         <input type="text" id='pid' name='id' required/>
 
         <label for="total_due">Total Due</label>
-        <input type="text" name="total_due" value="100000" readonly/>
+        <input type="text" name="total_due" id='due' value="" readonly/>
 
         <label for="new_pay">New Payment</label>
-        <input type="new_pay" name="new_pay" required/>
+        <input type="number" name="new_pay" id='amount' required/>
 
         <div class="payment">
-          <input class="check-submit" type="submit" value="Ok" onclick="total_after()">
-          <input class="check-submit" type="reset">
+          <button type="button" class="check-submit check-button" id="submit">Submit</button>
+          <button type="button" class="check-submit check-button" id="reset">Reset</button>
         </div>
       </form>
 
-      <button class="check-submit check-button" type="button" name="update">Update</button>
+      <button class="check-submit check-button" type="button" id="update">Update</button>
 
     </section>
 
