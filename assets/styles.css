@@ -77,6 +77,23 @@ header h1 {
   font-size: 3em;
 }
 
+/** Approve **/
+.approve th,
+.approve tr {
+  font-size: 1.5em;
+}
+
+
+.approve-submit {
+  min-height: 4vh;
+}
+
+.approve-form {
+  display: flex;
+  flex-direction: column;
+
+}
+
 /** nav **/
 
 .nav a {
@@ -143,15 +160,18 @@ header h1 {
 }
 
 .home-links nav {
-  width: 50%;
+  width: 60%;
   display:flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 3em;
+  margin-bottom: 5vh;
 }
 
 .home-links nav a {
-  background-color: #F2EFFA;
+  background-color: #613DC1;
   border-radius: 5px;
-  color: #613DC1;
+  color: #E2FDFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,7 +180,7 @@ header h1 {
   padding: .2em .5em .2em .5em;
   text-decoration: none;
   text-align:center;
-  width: 20%;
+  width: 15vw;
   margin: .25em;
 }
 
@@ -170,7 +190,9 @@ header h1 {
 }
 
 .home-links nav a:hover {
-  box-shadow: 1px 1px 1px #613DC1;
+  box-shadow: 0px 0px 10px #613DC1;
+  color: #613DC1;
+  background-color: #FFFFFF;
 }
 
 
@@ -318,6 +340,12 @@ text-align: center;
   color: #613DC1;
 }
 
+
+/** Roster **/
+.roster-button {
+  margin-top: 1vh;
+}
+
 /** Doctors **/
 
 .doctors {
@@ -378,18 +406,25 @@ text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: #613DC1;
+}
+
+.search-form p {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .search-form label {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #613DC1;
   display: flex;
   justify-content: space-between;
-  margin: 0.1rem 0 0.1rem 0;
+  margin: 0.3rem 0 0.1rem 0;
   padding-bottom: 0.1rem;
 }
 
 .search-form label input {
   margin-left: 0.3rem;
+  
 }
 
 .search-form button {

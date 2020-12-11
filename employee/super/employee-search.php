@@ -21,6 +21,8 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2], $link)) {
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
 
+      <h1>Employees</h1>
+
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
@@ -28,7 +30,7 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2], $link)) {
     </header>
 
     <main class='roster-table'>
-      <h1>Employees</h1>
+
       <div class='employee-form-wrap'>
         <form class="search-form">
           <p>Find an employee:</p>
@@ -44,8 +46,8 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2], $link)) {
           <label>Salary
             <input type="number" name="salary">
           </label>
-          <button type="button" id='search'>Search</button>
-          <button type="button" id='reset'>Reset</button>
+          <button class="check-submit" type="button" id='search'>Search</button>
+          <button class="check-submit" type="button" id='reset'>Reset</button>
         </form>
 
       <?php
@@ -59,7 +61,7 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2], $link)) {
             <label>New salary:
               <input type="number" name="update-salary">
             </label>
-            <button type='button' id='update'>Update</button>
+            <button class="check-submit" type='button' id='update'>Update</button>
           </form>
           EOT;
         }

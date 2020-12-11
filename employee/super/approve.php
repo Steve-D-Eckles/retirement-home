@@ -26,8 +26,8 @@ if (auth([1, 2], $link)) {
     </header>
     <section class='centered-form-wrap'>
 
-      <form action='approve-submit.php' method='post'>
-        <table class='doctors'>
+      <form class="approve-form" action='approve-submit.php' method='post'>
+        <table class='doctors approve'>
           <tr>
             <th>Name</th>
             <th>Role</th>
@@ -47,8 +47,8 @@ if (auth([1, 2], $link)) {
       <tr>
         <td>$first_name $last_name</td>
         <td>$role_name</td>
-        <td><input type='checkbox' name='confirm[]' value=$user_id></td>
-        <td><input type='checkbox' name='deny[]' value=$user_id></td>
+        <td><input class="checkbox" type='checkbox' name='confirm[]' value=$user_id></td>
+        <td><input class="checkbox" type='checkbox' name='deny[]' value=$user_id></td>
       </tr>
       EOT;
     }
@@ -56,7 +56,7 @@ if (auth([1, 2], $link)) {
   }
   echo <<<"EOT"
         </table>
-        <input type='submit' value='Submit'>
+        <input class="check-submit approve-submit" type='submit' value='Submit'>
       </form>
     </section>
     <footer>

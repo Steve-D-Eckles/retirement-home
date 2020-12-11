@@ -21,6 +21,8 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
     <header>
       <a href="../../auth/php/logout.php">Logout</a>
 
+      <h1>Patients Search</h1>
+
       <nav class="nav">
         <a href="home.php">Home</a>
       </nav>
@@ -28,7 +30,7 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
     </header>
 
     <main class='roster-table'>
-      <h1>Patients</h1>
+
 
       <form class="search-form">
         <p>Find a patient:</p>
@@ -50,8 +52,8 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
         <label>Admission Date
           <input type="date" name="date">
         </label>
-        <button type="button" id='search'>Search</button>
-        <button type="button" id='reset'>Reset</button>
+        <button class="check-submit" type="button" id='search'>Search</button>
+        <button class="check-submit" type="button" id='reset'>Reset</button>
       </form>
 
       <div class='scrollable'>

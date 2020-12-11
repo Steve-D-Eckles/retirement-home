@@ -34,7 +34,7 @@ if (!$_SESSION['loggedin']) {
       <?php
       echo "<input type='date' id='roster-date' value='" . date('Y-m-d') . "'>";
       ?>
-      <button type="button" id="roster-date-search">Search</button>
+      <button class="check-submit roster-button" type="button" id="roster-date-search">Search</button>
 
       <table id="roster-table" class='doctors'>
         <tr>

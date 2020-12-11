@@ -24,7 +24,7 @@ if (auth([1], $link)) {
       </nav>
     </header>
     <main class='home-links'>
-
+      <h2>Admin Menu</h2>
       <nav>
         <a href="role.php">View / Add Roles</a>
         <a href="../super/add-info.php">Add Patient Info</a>
