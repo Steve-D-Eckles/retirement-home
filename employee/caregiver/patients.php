@@ -52,8 +52,8 @@ if(!isset($_SESSION['user_id']) || !auth([1, 2, 3, 4], $link)) {
         <label>Admission Date
           <input type="date" name="date">
         </label>
-        <button class="check-submit" type="button" id='search'>Search</button>
-        <button class="check-submit" type="button" id='reset'>Reset</button>
+        <button class="check-submit check-payment" type="button" id='search'>Search</button>
+        <button class="check-submit check-payment" type="button" id='reset'>Reset</button>
       </form>
 
       <div class='scrollable'>

@@ -278,9 +278,14 @@ header h1 {
   border-radius: 5px;
 }
 
+.check-payment {
+  margin: 1em;
+}
+
 .check-button {
-  min-width: 12em;
+  min-width: 10vw;
   padding: .5em;
+  justify-content: center;
 }
 
 .check-submit:hover {
@@ -344,6 +349,7 @@ text-align: center;
 /** Roster **/
 .roster-button {
   margin-top: 1vh;
+  padding: .5rem;
 }
 
 /** Doctors **/
@@ -424,7 +430,7 @@ text-align: center;
 
 .search-form label input {
   margin-left: 0.3rem;
-  
+
 }
 
 .search-form button {
